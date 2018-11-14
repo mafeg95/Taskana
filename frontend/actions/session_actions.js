@@ -15,7 +15,7 @@ export const logoutCurrentUser = () => ({
 });
 
 export const receiveErrors = errors => {
-  debugger
+  
   return {
     type: RECEIVE_SESSION_ERRORS,
     errors
@@ -23,7 +23,7 @@ export const receiveErrors = errors => {
 };
 
 export const demoLogin = () => dispatch => {
-  debugger
+  
   return (APIUtil.login({username: 'Demo User', password: 'hogwarts'}).then(user => (
     dispatch(receiveCurrentUser(user))
     ), err => (dispatch(receiveErrors(err.responseJSON))))

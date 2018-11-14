@@ -24,7 +24,7 @@ const Splash = ({ currentUser, logout }) => {
       </div>
     </nav>
   )
-  debugger
+  
   return currentUser ? greeting() : links();
 }
 

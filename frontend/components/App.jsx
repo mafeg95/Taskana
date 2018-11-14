@@ -6,7 +6,7 @@ import LogInFormContainer from './session_form/login_form_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 const App = () => {
-  debugger
+  
   return (
     <div>
       <header>

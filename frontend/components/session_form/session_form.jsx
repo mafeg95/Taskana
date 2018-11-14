@@ -22,7 +22,7 @@ class SessionForm extends React.Component {
   }
 
   componentWillUnmount() {
-    debugger
+
     if (this.props.match.path === '/login' || this.props.match.path === '/signup'){
       this.props.removeErrors();
     }
