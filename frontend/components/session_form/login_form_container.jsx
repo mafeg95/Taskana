@@ -1,0 +1,27 @@
+import { connect } from 'react-redux';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { login, removeErrors, demoLogin } from '../../actions/session_actions';
+import SessionForm from './session_form';
+
+const msp = ({ errors }) => {
+  return {
+    errors: errors.session,
+    formType: 'login',
+    navLink: <Link to="/signup">Sign up</Link>,
+    navMessage: "Don't have an account?",
+    formTitle: "Log In"
+  };
+};
+
+const mdp = dispatch => {
+  return {
+    processForm: (user) => dispatch(login(user)),
+    removeErrors: () => dispatch(removeErrors()),
+    demoLogin: () => dispatch(demoLogin())
+  };
+};
+
+export default connect(msp, mdp)(SessionForm);
+
+//still need to mdp for the demoLogin

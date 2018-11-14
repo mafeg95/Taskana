@@ -1,15 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
-
-// debugger
+import Root from './components/root';
 
 document.addEventListener('DOMContentLoaded', () => {
   // if (window.currentUser){
   // preloadedState looking like the state shape if i have a current user, with cu
   // }
-  // debugger
-  // const store = configureStore();
+  //
+  const store = configureStore();
+  //Testing
+  
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
+  //Testing end
   const root = document.getElementById('root');
-  ReactDOM.render(<h1>Welcome to Taskana</h1>, root);
+  ReactDOM.render(<Root store={store}/>, root);
 });
