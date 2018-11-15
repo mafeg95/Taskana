@@ -77,7 +77,6 @@ class SessionForm extends React.Component {
           </form>
           <footer>
             <p>{this.props.navMessage}</p> {this.props.otherForm}
-            <br/>
           </footer>
         </div>
       </div>
