@@ -1,12 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Splash = ({ currentUser, logout }) => {
+const Splash = ({ currentUser, logout, openModal, closeModal }) => {
   const links = () => (
     <nav className="login-signup">
-      <Link to="/login">Login</Link>
+      <button className="header-signup" onClick={() => openModal('login')}>Log In</button>
       &nbsp;
-      <Link to="/signup">Sign up</Link>
+      <button className="header-login" onClick={() => openModal('signup')}>Sign Up</button>
     </nav>
   );
   const greeting = () => (
@@ -24,8 +24,9 @@ const Splash = ({ currentUser, logout }) => {
       </div>
     </nav>
   )
-  
-  return currentUser ? greeting() : links();
+
+  return currentUser ? (greeting()) : links();
+  // do i need currentUser and logout?
 }
 
 export default Splash;

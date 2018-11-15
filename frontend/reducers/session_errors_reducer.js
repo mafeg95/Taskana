@@ -8,7 +8,6 @@ export default (state = [], action) => {
         return action.errors;
     case RECEIVE_CURRENT_USER:
     case REMOVE_ERRORS:
-
       return [];
     default:
       return state;

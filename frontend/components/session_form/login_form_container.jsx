@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { login, removeErrors, demoLogin } from '../../actions/session_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 import SessionForm from './session_form';
 
 const msp = ({ errors }) => {
@@ -18,7 +19,13 @@ const mdp = dispatch => {
   return {
     processForm: (user) => dispatch(login(user)),
     removeErrors: () => dispatch(removeErrors()),
-    demoLogin: () => dispatch(demoLogin())
+    demoLogin: () => dispatch(demoLogin()),
+    otherForm: (
+      <button className="modal-signup" onClick={() => dispatch(openModal('signup'))}>
+        Sign Up
+      </button>
+    ),
+    closeModal: () => dispatch(closeModal())
   };
 };
 
