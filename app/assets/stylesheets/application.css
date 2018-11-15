@@ -116,7 +116,7 @@ body {
   padding-left: 16px;
   width: 95%;
   margin-bottom: 30px;
-  color: #B7BFC5;
+  color: #646F7A;
   font-size: 16px;
 }
 
@@ -260,6 +260,7 @@ footer > p {
   width: 40%;
   margin-bottom: 30px;
   font-size: 16px;
+  color: #646F7A;
 }
 
 ::placeholder {
