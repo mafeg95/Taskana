@@ -28,7 +28,7 @@ class SessionForm extends React.Component {
   }
 
   componentWillUnmount() {
-    debugger
+    
     if (this.props.formType === 'login' || this.props.formType === 'signup'){
       this.props.removeErrors();
     }
