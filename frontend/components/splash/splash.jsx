@@ -2,12 +2,28 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Splash = ({ currentUser, logout, openModal, closeModal }) => {
+
   const links = () => (
-    <nav className="login-signup">
-      <button className="header-signup" onClick={() => openModal('login')}>Log In</button>
-      &nbsp;
-      <button className="header-login" onClick={() => openModal('signup')}>Sign Up</button>
-    </nav>
+    <div>
+      <nav className="login-signup">
+        <button className="header-login" onClick={() => openModal('Log In')}>Log In</button>
+        &nbsp;
+        <button className="header-signup" onClick={() => openModal('Sign Up')}>Sign Up</button>
+      </nav>
+      <section className="section-splash">
+        <div className="splash-content">
+          <section className="splash-content-text">
+            <div className="further-div">
+              <h1 className="splash-h1">Make more time for the work that matters most</h1>
+              <p className="splash-text">Asana is the work management platform teams use to stay focused on the goals, projects, and daily tasks that grow your business.</p>
+            </div>
+          </section>
+          <input id="splash-email" type="text"
+            className="login-input-splash" required placeholder="name@company.com"/>
+            <button className="header-signup" onClick={() => openModal('Sign Up')}>Sign Up</button>
+        </div>
+      </section>
+    </div>
   );
   const greeting = () => (
     <nav className="header">

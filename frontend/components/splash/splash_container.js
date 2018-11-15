@@ -4,9 +4,10 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 import Splash from './splash';
 
 const msp = ({ session, entities }) => {
-
+  debugger
   return {
     currentUser: entities.users[session.currentUserId]
+
   };
 };
 

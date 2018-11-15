@@ -8,10 +8,10 @@ import SessionForm from './session_form';
 const msp = ({ errors }) => {
   return {
     errors: errors.session,
-    formType: 'login',
+    formType: 'Log In',
     navLink: <Link to="/signup">Sign up</Link>,
     navMessage: "Don't have an account?",
-    formTitle: "Log In"
+    formTitle: "Log in"
   };
 };
 
@@ -21,7 +21,7 @@ const mdp = dispatch => {
     removeErrors: () => dispatch(removeErrors()),
     demoLogin: () => dispatch(demoLogin()),
     otherForm: (
-      <button className="modal-signup" onClick={() => dispatch(openModal('signup'))}>
+      <button className="modal-signup" onClick={() => dispatch(openModal('Sign Up'))}>
         Sign Up
       </button>
     ),

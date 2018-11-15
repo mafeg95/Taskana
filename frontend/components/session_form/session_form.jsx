@@ -28,8 +28,8 @@ class SessionForm extends React.Component {
   }
 
   componentWillUnmount() {
-    
-    if (this.props.formType === 'login' || this.props.formType === 'signup'){
+
+    if (this.props.formType === 'Log In' || this.props.formType === 'Sign Up'){
       this.props.removeErrors();
     }
   }
@@ -57,20 +57,20 @@ class SessionForm extends React.Component {
           <form onSubmit={this.handleSubmit} className="login-form-box">
             {this.renderErrors()}
             <div className="login-form">
-              <label for="email">
+              <label htmlFor="email">
                 Email Address
               </label>
                 <input id="email" type="text"
                   onChange={this.update('username')}
                   value={this.state.username}
-                  className="login-input"/>
-              <label for="password">
+                  className="login-input" required placeholder="name@company.com"/>
+                <label htmlFor="password">
                 Password
               </label>
                 <input id="password" type="password"
                   value={this.state.password}
                   onChange={this.update('password')}
-                  className="login-input"/>
+                  className="login-input" required placeholder="Password"/>
                 <input className="session-submit button" type="submit" value={this.props.formType} />
               <button className="session-submit" onClick={this.handleSubmitDemo}>Demo User</button>
             </div>
