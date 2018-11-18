@@ -1,6 +1,9 @@
-class Api::ProjectsController < ApplicationRecord
+class Api::ProjectsController < ApplicationController
   def create
+
     @project = Project.new(project_params)
+    @project.team_id = current_user.id
+
     if @project.save
       render :show
     else
@@ -10,8 +13,9 @@ class Api::ProjectsController < ApplicationRecord
 
   def update
     @project = Project.find(params[:id])
+    #
     if @project.update(project_params)
-      render json: 'api/projects/show'
+      render :show
     else
       render json: @project.errors.full_messages, status: 422
     end
@@ -23,7 +27,7 @@ class Api::ProjectsController < ApplicationRecord
   end
 
   def index
-    @projects = current_user.projects
+    @projects = Project.all
     render :index
   end
 
@@ -31,7 +35,7 @@ class Api::ProjectsController < ApplicationRecord
     @project = Project.find(params[:id])
    #check for current_user.id == to project.user_id
     @project.destroy
-    render json: 'api/projects/show'
+    render :index
   end
 
   private

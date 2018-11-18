@@ -30,5 +30,3 @@ const mdp = dispatch => {
 };
 
 export default connect(msp, mdp)(SessionForm);
-
-//still need to mdp for the demoLogin

@@ -1,0 +1,36 @@
+.aside-index {
+  display: flex;
+  flex-direction: column;
+  width: 244px;
+  transition: margin-left 250ms ease-out,transform 250ms ease-out;
+}
+
+.aside-project-index {
+  background-color: #151b26;
+  display: flex;
+  flex-direction: column;
+}
+
+.aside-projects {
+  position: relative;
+}
+
+.aside-projects-list {
+  color: #d5dce0;
+  font-weight: 400;
+  align-items: center;
+}
+
+.aside-project {
+  align-items: center;
+  display: flex;
+  justify-content: right;
+  padding: 0 10px 0 15px;
+  height: 28px;
+}
+
+.main-ui {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}

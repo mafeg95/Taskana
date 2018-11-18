@@ -64,7 +64,7 @@ class SessionForm extends React.Component {
                   onChange={this.update('username')}
                   value={this.state.username}
                   className="login-input" required placeholder="name@company.com"/>
-                <label htmlFor="password">
+              <label htmlFor="password">
                 Password
               </label>
                 <input id="password" type="password"

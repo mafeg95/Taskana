@@ -4,7 +4,7 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 import Splash from './splash';
 
 const msp = ({ session, entities }) => {
-  debugger
+
   return {
     currentUser: entities.users[session.currentUserId]
 
@@ -13,7 +13,7 @@ const msp = ({ session, entities }) => {
 
 const mdp = dispatch => ({
   logout: () => dispatch(logout()),
-  openModal: modal => dispatch(openModal(modal)),
+  openModal: (modal, projectId) => dispatch(openModal(modal, projectId)),
   closeModal: () => dispatch(closeModal())
 });
 

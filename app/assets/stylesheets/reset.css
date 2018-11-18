@@ -48,12 +48,11 @@ button {
     /* padding: 1rem 2rem; */
     margin: 0;
     text-decoration: none;
-    background: #F6F8F9;
+    /* background: #F6F8F9; */
     /* color: #ffffff; */
     cursor: pointer;
     text-align: center;
-    transition: background 200ms ease-in-out,
-                transform 100ms ease;
+    transition: transform 100ms ease;
     -webkit-appearance: none;
     -moz-appearance: none;
 }

@@ -11,8 +11,8 @@
 #
 
 class Project < ApplicationRecord
-  validates :name, :team_id, presence: true, uniqueness: true
-  validates :description, presence: true
+  validates :name, presence: true, uniqueness: true
+  validates :description, :team_id, presence: true
 
   # team id will serve as user id for now
   belongs_to :user,

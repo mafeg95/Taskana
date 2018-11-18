@@ -4,13 +4,22 @@ import configureStore from './store/store';
 import Root from './components/root';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // if (window.currentUser){
-  // preloadedState looking like the state shape if i have a current user, with cu
-  // }
-  //
-  const store = configureStore();
-  //Testing
+  let store;
   
+  if (window.currentUser){
+    const preloadedState = {
+      entities: {
+        users: { [window.currentUser.id]: window.currentUser}
+      },
+      session: { currentUserId: window.currentUser.id}
+    };
+    store = configureStore(preloadedState);
+  } else {
+    store = configureStore();
+  }
+
+  //Testing
+
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   //Testing end

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 const Splash = ({ currentUser, logout, openModal, closeModal }) => {
 
   const links = () => (
@@ -25,21 +26,29 @@ const Splash = ({ currentUser, logout, openModal, closeModal }) => {
       </section>
     </div>
   );
-  const greeting = () => (
-    <nav className="header">
-      <div className="left">
-        <Link to="/" className="header-link">
-          <h1>Home</h1>
-        </Link>
-      </div>
-      <div className="right">
-        <input type="button" placeholder="Search..."></input>
-        <button>+ New</button>
-        <button>{currentUser.username}</button>
-        <button className="header-button" onClick={logout}>Log Out</button>
-      </div>
-    </nav>
-  )
+
+  const greeting = () => {
+    return (
+      <section>
+        <header>
+          <nav className="header">
+            <div className="left">
+              <span>Button</span>
+              <Link to="/" className="header-link">
+                <h1>Home</h1>
+              </Link>
+            </div>
+            <div className="right">
+              <button className="header-new" onClick={() => openModal('Create Project')}>+ New</button>
+              <button className="user-menu">{currentUser.username}</button>
+              <button className="header-button" onClick={logout}>Log Out</button>
+            </div>
+          </nav>
+        </header>
+      </section>
+    )
+
+  }
 
   return currentUser ? (greeting()) : links();
   // do i need currentUser and logout?

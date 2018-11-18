@@ -6,9 +6,10 @@ export const REMOVE_PROJECT = 'REMOVE_PROJECT';
 export const RECEIVE_PROJECT_ERRORS = 'RECEIVE_PROJECT_ERRORS';
 export const REMOVE_ERRORS = 'REMOVE_ERRORS';
 
-export const receiveProjects = () => {
+export const receiveProjects = (projects) => {
   return {
     type: RECEIVE_ALL_PROJECTS,
+    projects
   };
 };
 
@@ -40,8 +41,8 @@ export const removeErrors = () => {
 };
 
 export const requestAllProjects = () => dispatch => {
-  return ProjectAPIUtil.fetchAllProjects().then(() => (
-    dispatch(receiveProjects())
+  return ProjectAPIUtil.fetchAllProjects().then(projects => (
+    dispatch(receiveProjects(projects))
   ));
 };
 
@@ -52,15 +53,20 @@ export const requestProject = id => dispatch => {
 };
 
 export const createProject = project => dispatch => {
+
   return ProjectAPIUtil.createProject(project).then(project => (
     dispatch(receiveProject(project))
   ), err => (dispatch(receiveErrors(err.responseJSON))));
 };
 
 export const updateProject = project => dispatch => {
-  return ProjectAPIUtil.updateProject(project).then(project => (
-    dispatch(receiveProject(project))
-  ), err => (dispatch(receiveErrors(err.responseJSON))));
+  return ProjectAPIUtil.updateProject(project).then(project => {
+
+    return dispatch(receiveProject(project));
+  }, err => {
+    debugger
+    return dispatch(receiveErrors(err.responseJSON));
+  });
 };
 
 export const deleteProject = projectId => dispatch => {
