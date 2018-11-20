@@ -14,7 +14,7 @@ class ProjectShow extends React.Component {
   render(){
     return (
       <div className="single-project">
-        {this.props.project.name}
+        
       </div>
     );
   }
