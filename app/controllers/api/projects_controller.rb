@@ -1,9 +1,8 @@
 class Api::ProjectsController < ApplicationController
   def create
-
     @project = Project.new(project_params)
     @project.team_id = current_user.id
-
+    @project.color = Random.new.bytes(3).unpack("H*")[0]
     if @project.save
       render :show
     else
@@ -27,15 +26,17 @@ class Api::ProjectsController < ApplicationController
   end
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects
     render :index
   end
 
   def destroy
     @project = Project.find(params[:id])
    #check for current_user.id == to project.user_id
-    @project.destroy
-    render :index
+    if @project.team_id == current_user.id
+      @project.destroy
+      render json: {id: @project.id}
+    end
   end
 
   private

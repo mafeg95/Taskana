@@ -9,7 +9,6 @@ const msp = ({ errors }) => {
   return {
     errors: errors.session,
     formType: 'Sign Up',
-    navLink: <Link to="/login">Log in</Link>,
     navMessage: "Already have an account?",
     formTitle: 'Sign up'
   };

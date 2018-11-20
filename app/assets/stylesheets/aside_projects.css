@@ -1,14 +1,10 @@
-.aside-index {
-  display: flex;
-  flex-direction: column;
-  width: 244px;
-  transition: margin-left 250ms ease-out,transform 250ms ease-out;
-}
 
 .aside-project-index {
-  background-color: #151b26;
+  /* background-color: #151b26; */
   display: flex;
   flex-direction: column;
+  position: relative;
+  padding-top: 60px;
 }
 
 .aside-projects {
@@ -16,8 +12,8 @@
 }
 
 .aside-projects-list {
-  color: #d5dce0;
-  font-weight: 400;
+  /* color: #d5dce0;
+  font-weight: 400; */
   align-items: center;
 }
 
@@ -33,4 +29,59 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+}
+
+.aside-index{
+  display: flex;
+  flex-direction: column;
+  width: 244px;
+  transition: margin-left 250ms ease-out,transform 200ms ease-out;
+  height: 100%;
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  background-color: #151b26;
+  /* padding-top: 60px; */
+  transition: 0.5s;
+}
+
+.closebtn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 16px;
+  margin-left: 50px;
+  color: #9CA6AE;
+  background-color: #151b26;
+  height: 16px;
+
+}
+
+.closebtn:hover{
+  background-color: #151b26;
+  color: white;
+}
+
+.link-project-aside {
+  color: #d5dce0;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+.aside-project:active {
+  background-color: #3B3F49;
+}
+
+.aside-project:hover{
+  background-color: #363B49;
+}
+
+.li-square {
+  height: 10px;
+  width: 10px;
+  background-color: aliceblue;
+  margin-right: 10px;
+  border-radius: 3px;
 }

@@ -28,10 +28,16 @@ const Modal = ({ modal, closeModal }) => {
     default:
       return null;
   }
+  const cases = modal.split(' ')
+  const classname = `modal-background ${cases[0].toLowerCase()}-${cases[1].toLowerCase()}`
   return (
-    <div className="modal-background" onClick={closeModal}>
-      <div className="modal-child" onClick={e => e.stopPropagation()}>
-        { component }
+    <div className="top-layer">
+      <div className={classname} onClick={closeModal}>
+        <div className="top-buffer"></div>
+          <div className="modal-child" onClick={e => e.stopPropagation()}>
+            { component }
+          </div>
+        <div className="bottom-buffer"></div>
       </div>
     </div>
   );

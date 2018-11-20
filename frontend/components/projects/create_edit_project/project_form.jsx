@@ -17,7 +17,14 @@ class ProjectForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const project = Object.assign({}, this.state);
-    this.props.action(project).then(this.props.closeModal);
+    this.props.action(project).then(({project}) => {
+      this.props.closeModal();
+      if (this.props.formType === 'Create Project'){
+        this.props.history.push(`/projects/${project.id}`);
+      } else {
+        this.props.history.push('/');
+      }
+    });
   }
 
   componentWillUnmount() {
@@ -41,24 +48,34 @@ class ProjectForm extends React.Component {
   render() {
     return (
       <section className="new-edit-modal">
-        <div onClick={this.props.closeModal} className="close-x">X</div>
-        <h1>{this.props.formMessage}</h1>
+        <div className="new-edit-header">
+          <div onClick={this.props.closeModal} className="close-x">&times;</div>
+          <h1>{this.props.formMessage}</h1>
+        </div>
         <form onSubmit={this.handleSubmit} className="create-edit-box">
           {this.renderErrors()}
           <div className="create-edit-form">
-            <label htmlFor="name">
-              Name
-            </label>
-              <input id="name" type="text"
-                onChange={this.update('name')}
-                value={this.state.name}
-                className="create-edit-input"/>
-              <label htmlFor="description">Description</label>
-              <input id="description" type="text"
+            <div className="create-edit-name">
+              <label htmlFor="name" className="label-name">
+                Name
+              </label>
+                <input id="name" type="text"
+                  onChange={this.update('name')}
+                  value={this.state.name}
+                  className="create-edit-input-name"/>
+            </div>
+            <div className="create-edit-description">
+              <label htmlFor="description" className="label-description">
+                Description
+              </label>
+              <textarea id="description" type="text"
                 onChange={this.update('description')}
                 value={this.state.description}
-                className="create-edit-input"/>
-              <input className="create-edit-submit" type="submit" value={this.props.formType}/>
+                className="create-edit-input-description"/>
+            </div>
+              <div className="create-edit-button">
+                <input className="create-edit-submit" type="submit" value={this.props.formType}/>
+              </div>
           </div>
         </form>
       </section>

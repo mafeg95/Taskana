@@ -1,10 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 
-const Splash = ({ currentUser, logout, openModal, closeModal }) => {
+class Splash extends React.Component {
+  constructor(props){
+    super(props);
+  }
 
-  const links = () => (
+  renderHeader(){
+    debugger
+    const { currentProject } = this.props;
+    if (currentProject){
+      return (<h1>{currentProject.name}</h1>);
+    } else {
+      return (
+        <Link to="/" className="header-link-greeting">
+          <h1>Home</h1>
+        </Link>
+      );
+    }
+  }
+
+  links() {
+    const { openModal, closeModal } = this.props;
+    return (
     <div>
       <nav className="login-signup">
         <button className="header-login" onClick={() => openModal('Log In')}>Log In</button>
@@ -26,31 +45,40 @@ const Splash = ({ currentUser, logout, openModal, closeModal }) => {
       </section>
     </div>
   );
+  }
 
-  const greeting = () => {
+  greeting() {
+    const { currentUser, logout, openModal } = this.props;
     return (
       <section>
         <header>
           <nav className="header">
             <div className="left">
-              <span>Button</span>
-              <Link to="/" className="header-link">
-                <h1>Home</h1>
-              </Link>
+              <button className="ham-button" onClick={this.props.openNav}>&#9776;</button>
             </div>
-            <div className="right">
-              <button className="header-new" onClick={() => openModal('Create Project')}>+ New</button>
-              <button className="user-menu">{currentUser.username}</button>
-              <button className="header-button" onClick={logout}>Log Out</button>
+            <div className="high-right">
+              <div className="low-left" style={{ marginLeft: this.props.sidebar ? '270px' : '60px'}}>
+                {this.renderHeader()}
+              </div>
+              <div className="right">
+                <button className="header-new" onClick={() => openModal('Create Project')}>+ New</button>
+                <button className="user-menu">{currentUser.username}</button>
+                <button className="header-button" onClick={logout}>Log Out</button>
+              </div>
             </div>
+            <div className="header-shadow"></div>
           </nav>
         </header>
       </section>
-    )
+    );
 
   }
 
-  return currentUser ? (greeting()) : links();
+  render() {
+    const { currentUser } = this.props;
+    return currentUser ? this.greeting() : this.links();
+
+  }
   // do i need currentUser and logout?
 }
 

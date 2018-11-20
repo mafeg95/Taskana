@@ -9,6 +9,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Modal from './modal/modal';
 import AsideSectionProjectIndex from '../components/aside_section/aside_section_index_container';
 
+
 const App = () => {
 
   return (
@@ -16,7 +17,7 @@ const App = () => {
       <Modal />
       <SplashContainer />
       <div className="main-ui">
-        <AsideSectionProjectIndex />
+        <ProtectedRoute path="/" component={AsideSectionProjectIndex} />
         <Switch>
           <ProtectedRoute exact path="/" component={MainSectionProjectIndex}/>
           <ProtectedRoute exact path="/projects/:projectId" component={ProjectShowContainer}/>

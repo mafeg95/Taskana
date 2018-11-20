@@ -14,32 +14,7 @@
  *= require_self
  */
 
- .modal-background {
-   position: fixed;
-   top: 0;
-   bottom: 0;
-   right: 0;
-   left: 0;
-   background-color: rgba(21,27,38,.85);
-   z-index: 10;
- }
 
- .modal-child {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* border: 1px solid black; */
-    background-color: #F6F8F9;
-    height: 700px;
-    width: 70%;
-    /* padding: 32px 112px;
-    margin-top: 80px; */
-    margin-right: auto;
-    margin-left: auto;
-    border-radius: 3px;
-    box-sizing: border-box;
- }
 
 .login-signup {
   display: flex;
@@ -101,6 +76,7 @@ body {
 
 .close-x{
   position: absolute;
+  cursor: pointer;
 }
 
 .login-form {
@@ -125,6 +101,7 @@ body {
   justify-content: flex-end;
   /* flex-direction: row-reverse; */
   padding: 32px 5%;
+  width: 100%;
 }
 
 .login-form > label {
@@ -266,4 +243,31 @@ footer > p {
 ::placeholder {
   color: #B7BFC5;
   letter-spacing: 1px;
+}
+
+.header-new:hover {
+  filter: saturate(300%);
+}
+
+.low-left{
+  transition: margin-left 250ms ease-out,transform 250ms ease-out;
+  font-size: 20px;
+}
+
+.header-link-greeting{
+  text-decoration: none;
+  color: black;
+}
+
+.header-shadow{
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.15);
+  height: .5px;
+  left: 0;
+  opacity: 1;
+  position: absolute;
+  right: 0;
+  transition: opacity 250ms;
+  position: fixed;
+  z-index: 20;
+  top: 70px;
 }

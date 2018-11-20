@@ -16,6 +16,8 @@
   line-height: 28px;
   font-weight: 500;
   color: #151b26;
+  height: 30px;
+  align-items: center;
 }
 
 .right {
@@ -25,7 +27,20 @@
 
 .left > span {
   padding-right: 10px;
+}
 
+.high-right {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding-left: 10px;
+  background-color: white;
+  z-index: 10;
 }
 
 .header-new {
@@ -55,8 +70,9 @@
 }
 
 .index{
-  width: 850px;
+  /* width: 850px;
   margin: 0 auto;
+  margin-left: 250px; */
 }
 
 .main-projects{
@@ -103,7 +119,7 @@
   display: flex;
   flex-flow: column;
   position: relative;
-  transition-duration: 0.4s
+  transition: margin-left 500ms ease-out,transform 500ms ease-out;
 }
 
 .tile-s-child{
@@ -159,9 +175,69 @@
   background: white;
 }
 
-.body-edit {
+.body-delete {
   position: absolute;
   right: 10px;
   top: 5px;
   opacity: 1;
+}
+
+.body-edit {
+  position: absolute;
+  right: 10px;
+  top: 25px;
+  opacity: 1;
+}
+
+.body-edit:hover {
+  background-color: grey;
+}
+
+.body-delete:hover {
+  background-color: grey;
+}
+
+.wrapper {
+  width: 850px;
+  margin: auto;
+}
+
+.ham-button {
+  font-size: 16px;
+  height: 30px;
+  position: fixed;
+  z-index: 11;
+}
+
+.logo {
+  position: absolute;
+  top: 17px;
+  left: 30px;
+  text-decoration: none;
+  color: white;
+}
+
+.index {
+  transition: margin-left 250ms ease-out,transform 250ms ease-out;
+}
+
+.fas {
+  font-size: 30px;
+  color: #9ca6af;
+}
+
+.new-project:hover .tile-new{
+  border: 2px dashed #646f79;
+}
+
+.new-project:hover .fas {
+  color: #646f79;
+}
+
+.new-project{
+  padding: 0;
+}
+
+textarea {
+  resize: none;
 }

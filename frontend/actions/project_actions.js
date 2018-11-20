@@ -64,7 +64,7 @@ export const updateProject = project => dispatch => {
 
     return dispatch(receiveProject(project));
   }, err => {
-    debugger
+    
     return dispatch(receiveErrors(err.responseJSON));
   });
 };

@@ -19,12 +19,12 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user).then(this.props.closeModal);
+    this.props.processForm(user).then(this.props.closeModal).then(() => this.props.history.push('/'));
   }
 
   handleSubmitDemo(e) {
     e.preventDefault();
-    this.props.demoLogin().then(this.props.closeModal);
+    this.props.demoLogin().then(() => this.props.history.push("/")).then(this.props.closeModal);
   }
 
   componentWillUnmount() {
