@@ -8,7 +8,7 @@ class Splash extends React.Component {
   }
 
   renderHeader(){
-    debugger
+
     const { currentProject } = this.props;
     if (currentProject){
       return (<h1>{currentProject.name}</h1>);

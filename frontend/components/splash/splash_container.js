@@ -6,7 +6,7 @@ import { openNav } from '../../actions/sidebar_actions';
 import { withRouter } from 'react-router-dom';
 
 const msp = ({ session, entities, ui }, ownProps) => {
-  debugger
+
   return {
     currentUser: entities.users[session.currentUserId],
     sidebar: ui.sidebar,
