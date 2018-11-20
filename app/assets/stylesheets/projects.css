@@ -178,23 +178,29 @@
 .body-delete {
   position: absolute;
   right: 10px;
-  top: 5px;
+  top: 10px;
   opacity: 1;
+  color: #151b26;
+  font-weight: 500;
+  border-radius: 5px;
 }
 
 .body-edit {
   position: absolute;
-  right: 10px;
-  top: 25px;
+  left: 10px;
+  top: 10px;
   opacity: 1;
+  color: #151b26;
+  font-weight: 500;
+  border-radius: 5px;
 }
 
 .body-edit:hover {
-  background-color: grey;
+  background-color: #d5dce0;
 }
 
 .body-delete:hover {
-  background-color: grey;
+  background-color: #d5dce0;
 }
 
 .wrapper {
