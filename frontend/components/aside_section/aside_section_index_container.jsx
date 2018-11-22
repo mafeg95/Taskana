@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import AsideSectionProjectIndex from './aside_section_index';
 import { requestAllProjects } from '../../actions/project_actions';
 import { openModal } from '../../actions/modal_actions';
-import { closeNav, deselectNewColumn, deselectEdit } from '../../actions/ui_actions';
+import { closeNav, deselectNewColumn, deselectEdit, closeDropdown } from '../../actions/ui_actions';
 
 
 const msp = state => {
@@ -19,7 +19,8 @@ const mdp = dispatch => {
     requestAllProjects: () => dispatch(requestAllProjects()),
     closeNav: () => dispatch(closeNav()),
     deselectNewColumn: () => dispatch(deselectNewColumn()),
-    deselectEdit: () => dispatch(deselectEdit())
+    deselectEdit: () => dispatch(deselectEdit()),
+    closeDropdown: () => dispatch(closeDropdown())
   };
 };
 

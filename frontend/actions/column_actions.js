@@ -22,6 +22,7 @@ export const receiveColumn = (column) => {
 };
 
 export const removeColumn = (column) => {
+  
   return {
     type: REMOVE_COLUMN,
     column
@@ -49,6 +50,7 @@ export const updateColumn = (column, projectId) => dispatch => {
 };
 
 export const deleteColumn = (columnId, projectId) => dispatch => {
+
   return ColumnAPIUtil.deleteColumn(columnId, projectId).then(column => (
     dispatch(removeColumn(column))
   ));

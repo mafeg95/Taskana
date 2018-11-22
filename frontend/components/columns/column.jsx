@@ -8,6 +8,7 @@ class Column extends React.Component {
       name: this.props.column.name
     };
     this.headerOrEdit = this.headerOrEdit.bind(this);
+    this.dropdownOpen = this.dropdownOpen.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.deleteButton = this.deleteButton.bind(this);
   }
@@ -41,24 +42,47 @@ class Column extends React.Component {
     };
   }
 
-  // editForm(){
-  //   const {column} = this.props;
-  //   return (<form className="new-board-form" onKeyPress={this.handleEdit}>
-  //     <input type="text" className="new-column-name"
-  //       onChange={this.update()}
-  //       value={column.name}
-  //       placeholder="New Column"
-  //       autoFocus></input>
-  //   </form>);
-  // }
+  dropdownOpen(){
+    const { dropdown, column, currentColumn, selectEdit, closeDropdown, deleteButton } = this.props;
+    debugger
+    if (!currentColumn){
+      return <div className="no-dropdown"></div>;
+    } else if ((dropdown === true ) && (column.id === currentColumn.id)){
+      debugger
+      return (
+        <div className="layer-positioner">
+          <div className="layer">
+            <div className="dropdown-edit-delete">
+              <div className="column-menu">
+                  <button className="column-menu-item"
+                    onClick={() => {
+                      selectEdit(column.id);
+                      closeDropdown();
+                    }}>
+                    <span className="column-menu-item-label">
+                      Edit
+                    </span>
+                  </button>
+                {this.deleteButton(column)}
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  }
 
   headerOrEdit(){
-    const { column } = this.props;
-    if (this.props.editing === false){
+    const { column, currentColumn, openDropdown, deselectEdit } = this.props;
+    if ((this.props.editing === false) || (column.id != currentColumn.id)){
       return (
         <div className="column-header-wrapper">
           <h1>{column.name}</h1>
-          <i class="fas fa-angle-down"></i>
+          <i className="fas fa-angle-down"
+            onClick={() => {
+              openDropdown(column.id);
+              deselectEdit();
+            }}></i>
         </div>);
     } else {
       return (<form className="new-board-form" onKeyPress={this.handleEdit}>
@@ -72,7 +96,7 @@ class Column extends React.Component {
   }
 
   render(){
-    const { column, deleteColumn, updateColumn, projectId, selectEdit, deselectEdit } = this.props;
+    const { column, projectId, deselectEdit, closeDropdown, dropdownOpen, currentColumn } = this.props;
     return (
       <div className="column-wrapper">
         <div className="board-column">
@@ -80,24 +104,15 @@ class Column extends React.Component {
             <div className="draggable">
               <div className="board-column-header">
                 {this.headerOrEdit()}
-                <div className="layer-positioner">
-                  <div className="layer">
-                    <div className="dropdown-edit-delete">
-                      <div className="column-menu">
-                          <button className="column-menu-item" onClick={() => selectEdit()}>
-                            <span className="column-menu-item-label">
-                              Edit
-                            </span>
-                          </button>
-                        {this.deleteButton(column)}
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {this.dropdownOpen()}
               </div>
             </div>
           </div>
-          <div className="board-column-body" onClick={() => deselectEdit()}>
+          <div className="board-column-body"
+            onClick={() => {
+              deselectEdit();
+              closeDropdown();
+            }}>
             <div className="add-card">
             </div>
             <div className="card-container">

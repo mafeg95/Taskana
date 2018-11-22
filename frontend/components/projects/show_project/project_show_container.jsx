@@ -8,8 +8,8 @@ import { deselectNewColumn, selectNewColumn, deselectEdit } from '../../../actio
 const msp = (state, { match }) => {
 
   const projectId = parseInt(match.params.projectId);
-  const project = selectProject(state.entities, projectId);
-  const columns = (project.column_ids) ? project.column_ids.map(id => state.entities.columns[id]) : [];
+  const project = state.entities.projects[projectId];
+  const columns = ((project && project.column_ids) ? project.column_ids.map(id => state.entities.columns[id]) : []) || null;
   return {
     projectId,
     project,

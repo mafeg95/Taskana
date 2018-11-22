@@ -31,9 +31,13 @@ class NewColumn extends React.Component {
   }
 
   render(){
-    const { deselectNewColumn, deselectEdit } = this.props;
+    const { deselectNewColumn, deselectEdit, closeDropdown } = this.props;
     return (
-      <div className="column-wrapper" onClick={() => deselectEdit()}>
+      <div className="column-wrapper"
+        onClick={() => {
+          deselectEdit();
+          closeDropdown();
+        }}>
         <div className="board-column">
           <div className="draggable">
             <form className="new-board-form" onKeyPress={this.handleSubmit}>

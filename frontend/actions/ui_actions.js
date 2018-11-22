@@ -36,24 +36,26 @@ export const selectNewColumn = () => {
   };
 };
 
-export const openDropdown = () => {
+export const openDropdown = (columnId) => {
   return {
     type: OPEN_DROPDOWN,
-    dropdown: true
+    dropdown: true,
+    columnId
   };
 };
 
 export const closeDropdown = () => {
   return {
     type: CLOSE_DROPDOWN,
-    dropdown: true
+    dropdown: false
   };
 };
 
-export const selectEdit = () => {
+export const selectEdit = (columnId) => {
   return {
     type: SELECT_EDIT,
-    editing: true
+    editing: true,
+    columnId
   };
 };
 

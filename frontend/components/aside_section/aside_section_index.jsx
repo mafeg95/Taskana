@@ -11,13 +11,14 @@ class AsideSectionProjectIndex extends React.Component {
 
 
   render(){
-    const { projects, deselectNewColumn, deselectEdit } = this.props;
+    const { projects, deselectNewColumn, deselectEdit, closeDropdown } = this.props;
     return (
       <aside id="aside-index" className="aside-index"
         style={{ width: this.props.sidebar ? '250px' : "0" }}
         onClick={() => {
           deselectNewColumn();
           deselectEdit();
+          closeDropdown();
         }}>
         <section className="aside-project-index" >
           <div className="aside-top">
