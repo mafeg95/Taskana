@@ -14,7 +14,6 @@ class Api::ProjectsController < ApplicationController
 
   def update
     @project = Project.find(params[:id])
-    #
     if @project.update(project_params)
       render :show
     else
@@ -23,7 +22,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
+    @project = Project.includes(columns: [:tasks]).find(params[:id])
     render :show
   end
 
