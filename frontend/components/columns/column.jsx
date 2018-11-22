@@ -44,11 +44,11 @@ class Column extends React.Component {
 
   dropdownOpen(){
     const { dropdown, column, currentColumn, selectEdit, closeDropdown, deleteButton } = this.props;
-    debugger
+
     if (!currentColumn){
       return <div className="no-dropdown"></div>;
     } else if ((dropdown === true ) && (column.id === currentColumn.id)){
-      debugger
+
       return (
         <div className="layer-positioner">
           <div className="layer">

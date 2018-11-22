@@ -6,7 +6,7 @@ import merge from 'lodash/merge';
 const defaultState = { currentUserId: null, currentProjectId: null, currentColumnId: null};
 
 const sessionReducer = (state = defaultState, action) => {
-  debugger
+
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
