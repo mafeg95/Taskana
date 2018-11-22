@@ -10,9 +10,9 @@ const ColumnsReducer = (state = {}, action) => {
     case RECEIVE_COLUMN:
       return merge({}, state, {[action.column.id]: action.column});
     case REMOVE_COLUMN:
-    
+
       let newState = merge({}, state);
-      delete newState[action.column.id];
+      delete newState[action.payload.column.id];
       return newState;
     default:
       return state;

@@ -19,14 +19,14 @@ const ProjectsReducer = (state = {}, action) => {
     case RECEIVE_COLUMN:
       newState = merge({}, state);
       if (!newState[action.column.project_id].column_ids.includes(action.column.id)){
-        newState[action.column.project_id].column_ids.push(action.column.id);  
+        newState[action.column.project_id].column_ids.push(action.column.id);
       }
       return newState;
     case REMOVE_COLUMN:
-
+    debugger
       newState = merge({}, state);
-      const columnIds = newState[action.column.project_id].column_ids;
-      columnIds.splice(columnIds.indexOf(action.column.id), 1);
+      const columnIds = newState[action.payload.column.project_id].column_ids;
+      columnIds.splice(columnIds.indexOf(action.payload.column.id), 1);
       return newState;
     default:
       return state;
