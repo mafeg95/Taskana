@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import Splash from './splash';
-import { openNav } from '../../actions/sidebar_actions';
+import { openNav, deselectNewColumn, deselectEdit } from '../../actions/ui_actions';
 import { withRouter } from 'react-router-dom';
 
 const msp = ({ session, entities, ui }, ownProps) => {
@@ -18,7 +18,9 @@ const mdp = dispatch => ({
   logout: () => dispatch(logout()),
   openModal: (modal, projectId) => dispatch(openModal(modal, projectId)),
   closeModal: () => dispatch(closeModal()),
-  openNav: () => dispatch(openNav())
+  openNav: () => dispatch(openNav()),
+  deselectNewColumn: () => dispatch(deselectNewColumn()),
+  deselectEdit: () => dispatch(deselectEdit())
 });
 
 export default withRouter(connect(msp, mdp)(Splash));

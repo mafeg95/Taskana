@@ -8,6 +8,7 @@
 #  team_id     :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  color       :string
 #
 
 class Project < ApplicationRecord
@@ -20,5 +21,5 @@ class Project < ApplicationRecord
     foreign_key: :team_id,
     class_name: :User
 
-
+  has_many :columns
 end

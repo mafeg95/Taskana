@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { closeNav } from '../../actions/sidebar_actions';
+import { closeNav } from '../../actions/ui_actions';
 
 class AsideSectionProjectIndex extends React.Component {
 
@@ -11,9 +11,14 @@ class AsideSectionProjectIndex extends React.Component {
 
 
   render(){
-    const { projects } = this.props;
+    const { projects, deselectNewColumn, deselectEdit } = this.props;
     return (
-      <aside id="aside-index" className="aside-index" style={{ width: this.props.sidebar ? '250px' : "0" }}>
+      <aside id="aside-index" className="aside-index"
+        style={{ width: this.props.sidebar ? '250px' : "0" }}
+        onClick={() => {
+          deselectNewColumn();
+          deselectEdit();
+        }}>
         <section className="aside-project-index" >
           <div className="aside-top">
             <Link to="/" className="logo">

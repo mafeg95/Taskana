@@ -1,4 +1,6 @@
 class Api::ProjectsController < ApplicationController
+  before_action :require_logged_in
+
   def create
     @project = Project.new(project_params)
     @project.team_id = current_user.id

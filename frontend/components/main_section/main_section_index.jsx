@@ -25,7 +25,8 @@ class MainSectionProjectIndex extends React.Component {
                   openModal={this.props.openModal}
                   deleteProject={this.props.deleteProject}/>
                 ))}
-              <button className="project-index-item new-project" onClick={() => openModal('Create Project')}>
+              <button className="project-index-item new-project" onClick={() => {
+                  openModal('Create Project')}}>
                 <div className="tile-structure">
                   <div className="tile-s-child">
                     <div className="tile-new">

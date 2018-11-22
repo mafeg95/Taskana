@@ -1,4 +1,4 @@
-import { CLOSE_NAV, OPEN_NAV } from '../actions/sidebar_actions';
+import { CLOSE_NAV, OPEN_NAV } from '../actions/ui_actions';
 import merge from 'lodash/merge';
 
 const sidebarReducer = (state = true, action) => {

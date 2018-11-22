@@ -13,10 +13,11 @@ export const receiveProjects = (projects) => {
   };
 };
 
-export const receiveProject = project => {
+export const receiveProject = ({project, columns}) => {
   return {
     type: RECEIVE_PROJECT,
-    project
+    project,
+    columns
   };
 };
 
@@ -47,8 +48,8 @@ export const requestAllProjects = () => dispatch => {
 };
 
 export const requestProject = id => dispatch => {
-  return ProjectAPIUtil.fetchSingleProject(id).then(project => (
-    dispatch(receiveProject(project))
+  return ProjectAPIUtil.fetchSingleProject(id).then(payload => (
+    dispatch(receiveProject(payload))
   ), err => (dispatch(receiveErrors(err.responseJSON))));
 };
 
@@ -64,7 +65,7 @@ export const updateProject = project => dispatch => {
 
     return dispatch(receiveProject(project));
   }, err => {
-    
+
     return dispatch(receiveErrors(err.responseJSON));
   });
 };
