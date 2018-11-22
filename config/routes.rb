@@ -4,7 +4,9 @@ Rails.application.routes.draw do
     resources :users, only: [:create]
     resource :session, only: [:create, :destroy, :show]
     resources :projects do
-      resources :columns, only: [:create, :destroy, :update]
+      resources :columns, only: [:create, :destroy, :update] do
+        resources :tasks, only: [:create, :update, :destroy]
+      end
     end
   end
 

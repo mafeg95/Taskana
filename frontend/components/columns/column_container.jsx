@@ -6,12 +6,17 @@ import Column from './column';
 import { selectEdit, deselectEdit, openDropdown, closeDropdown } from '../../actions/ui_actions';
 
 const msp = (state, ownProps) => {
-
+  const columnId = parseInt(ownProps.column.id);
+  const column = state.entities.columns[columnId];
+  const tasks = ((column && column.task_ids) ? column.task_ids.map(id => state.entities.tasks[id]) : []);
+  const taskIds = column.task_ids;
   return {
     projectId: ownProps.column.project_id,
     editing: state.ui.editing,
     currentColumn: state.entities.columns[state.session.currentColumnId],
-    dropdown: state.ui.dropdown
+    dropdown: state.ui.dropdown,
+    tasks,
+    taskIds
   };
 };
 

@@ -21,7 +21,15 @@ class User < ApplicationRecord
     primary_key: :id,
     foreign_key: :team_id,
     class_name: :Project
-    
+
+  has_many :authored_tasks,
+    foreign_key: :author_id,
+    class_name: :Task
+
+  has_many :assigned_tasks,
+    foreign_key: :author_id,
+    class_name: :Task
+
   after_initialize :ensure_session_token
 
   def self.find_by_credentials(username, password)

@@ -13,4 +13,6 @@ class Column < ApplicationRecord
   validates :name, :project_id, presence: true
 
   belongs_to :project
+
+  has_many :tasks
 end

@@ -21,5 +21,11 @@ class Project < ApplicationRecord
     foreign_key: :team_id,
     class_name: :User
 
-  has_many :columns
+  has_many :columns,
+    dependent: :destroy
+
+  has_many :tasks,
+    through: :columns,
+    source: :tasks,
+    dependent: :destroy
 end

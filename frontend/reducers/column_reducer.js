@@ -8,7 +8,7 @@ const ColumnsReducer = (state = {}, action) => {
     case RECEIVE_PROJECT:
       return merge({}, state, action.columns);
     case RECEIVE_COLUMN:
-      return merge({}, state, {[action.column.id]: action.column});
+      return merge({}, state, {[action.payload.column.id]: action.payload.column});
     case REMOVE_COLUMN:
 
       let newState = merge({}, state);

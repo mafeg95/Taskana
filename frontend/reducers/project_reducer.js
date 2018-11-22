@@ -6,9 +6,6 @@ const ProjectsReducer = (state = {}, action) => {
   let newState;
   switch (action.type) {
     case RECEIVE_PROJECT:
-
-    // case RECEIVE_ALL_COLUMNS:
-      // let project = action.payload.project;
       return merge({}, state, {[action.project.id]: action.project});
     case RECEIVE_ALL_PROJECTS:
       return merge({}, action.projects);
@@ -17,13 +14,13 @@ const ProjectsReducer = (state = {}, action) => {
       delete newState[action.projectId];
       return newState;
     case RECEIVE_COLUMN:
+
       newState = merge({}, state);
-      if (!newState[action.column.project_id].column_ids.includes(action.column.id)){
-        newState[action.column.project_id].column_ids.push(action.column.id);
+      if (!newState[action.payload.column.project_id].column_ids.includes(action.payload.column.id)){
+        newState[action.payload.column.project_id].column_ids.push(action.payload.column.id);
       }
       return newState;
     case REMOVE_COLUMN:
-    debugger
       newState = merge({}, state);
       const columnIds = newState[action.payload.column.project_id].column_ids;
       columnIds.splice(columnIds.indexOf(action.payload.column.id), 1);

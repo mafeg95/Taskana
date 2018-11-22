@@ -13,11 +13,12 @@ export const receiveProjects = (projects) => {
   };
 };
 
-export const receiveProject = ({project, columns}) => {
+export const receiveProject = ({project, columns, tasks}) => {
   return {
     type: RECEIVE_PROJECT,
     project,
-    columns
+    columns,
+    tasks
   };
 };
 

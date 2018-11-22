@@ -1,5 +1,6 @@
 import React from 'react';
 import merge from 'lodash/merge';
+import Task from '../tasks/task';
 
 class Column extends React.Component {
   constructor(props){
@@ -16,11 +17,14 @@ class Column extends React.Component {
 
 
   taskIds(){
-    return true ? "not-empty" : "empty";
+
+    const { taskIds } = this.props;
+
+    return (taskIds.length > 0) ? "not-empty" : "empty";
   }
   deleteButton(column) {
-    const { deleteColumn, projectId } = this.props;
-    return false ? <span className="no-delete"></span> : <button className="column-menu-item" onClick={() => deleteColumn(column.id, projectId)}><span className="column-menu-item-label">Delete</span></button>;
+    const { deleteColumn, projectId, taskIds } = this.props;
+    return (taskIds.length > 0) ? <span className="no-delete"></span> : <button className="column-menu-item" onClick={() => deleteColumn(column.id, projectId)}><span className="column-menu-item-label">Delete</span></button>;
   }
 
   handleEdit(e) {
@@ -96,16 +100,14 @@ class Column extends React.Component {
   }
 
   render(){
-    const { column, projectId, deselectEdit, closeDropdown, dropdownOpen, currentColumn } = this.props;
+    const { column, projectId, deselectEdit, closeDropdown, dropdownOpen, currentColumn, tasks } = this.props;
     return (
       <div className="column-wrapper">
         <div className="board-column">
-          <div className={this.taskIds()}>
-            <div className="draggable">
-              <div className="board-column-header">
-                {this.headerOrEdit()}
-                {this.dropdownOpen()}
-              </div>
+          <div className="draggable">
+            <div className="board-column-header">
+              {this.headerOrEdit()}
+              {this.dropdownOpen()}
             </div>
           </div>
           <div className="board-column-body"
@@ -116,8 +118,14 @@ class Column extends React.Component {
             <div className="add-card">
             </div>
             <div className="card-container">
-              <div className="card-scrollable">
-                <div className="cards">
+              <div className={this.taskIds()}>
+                <div className="card-scrollable">
+                  <div className="cards">
+                    {tasks.map(task => (
+                      <Task key={task.id}
+                        task={task}/>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>

@@ -13,11 +13,11 @@ export const REMOVE_COLUMN = 'REMOVE_COLUMN';
 //   };
 // };
 
-export const receiveColumn = (column) => {
+export const receiveColumn = (payload) => {
 
   return {
     type: RECEIVE_COLUMN,
-    column
+    payload
   };
 };
 
