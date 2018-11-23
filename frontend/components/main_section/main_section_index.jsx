@@ -31,7 +31,7 @@ class MainSectionProjectIndex extends React.Component {
                   <div className="tile-s-child">
                     <div className="tile-new">
                       <div className="card">
-                        <i className="fas fa-plus"></i>
+                        <i className="fas fa-plus project-new"></i>
                       </div>
                     </div>
                   </div>

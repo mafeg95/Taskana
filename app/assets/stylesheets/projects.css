@@ -227,7 +227,7 @@
   transition: margin-left 250ms ease-out,transform 250ms ease-out;
 }
 
-.fas {
+.project-new {
   font-size: 30px;
   color: #9ca6af;
 }
@@ -236,7 +236,7 @@
   border: 2px dashed #646f79;
 }
 
-.new-project:hover .fas {
+.new-project:hover .project-new {
   color: #646f79;
 }
 

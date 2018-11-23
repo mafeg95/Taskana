@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { requestProject } from '../../../actions/project_actions';
 import { selectProject } from '../../../reducers/selectors';
 import ProjectShow from './project_show';
-import { deselectNewColumn, selectNewColumn, deselectEdit } from '../../../actions/ui_actions';
+import { deselectNewColumn, selectNewColumn, deselectEdit, hideTaskNew } from '../../../actions/ui_actions';
 
 const msp = (state, { match }) => {
 
@@ -23,7 +23,8 @@ const mdp = dispatch => ({
   requestProject: id => dispatch(requestProject(id)),
   deselectNewColumn: () => dispatch(deselectNewColumn()),
   selectNewColumn: () => dispatch(selectNewColumn()),
-  deselectEdit: () => dispatch(deselectEdit())
+  deselectEdit: () => dispatch(deselectEdit()),
+  hideTaskNew: () => dispatch(hideTaskNew())
 });
 
 export default connect(msp, mdp)(ProjectShow);

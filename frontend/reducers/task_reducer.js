@@ -11,10 +11,10 @@ const TasksReducer = (state = {}, action) => {
     case RECEIVE_COLUMN:
       return merge({}, state, action.tasks);
     case RECEIVE_TASK:
-      return merge({}, state, {[action.task.id]: action.task});
+      return merge({}, state, {[action.payload.task.id]: action.payload.task});
     case REMOVE_TASK:
       let newState = merge({}, state);
-      delete newState[action.task.id];
+      delete newState[action.payload.task.id];
       return newState;
     default:
       return state;

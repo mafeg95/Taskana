@@ -17,6 +17,7 @@ class NewColumn extends React.Component {
       if (this.state.name === ''){
         this.props.deselectNewColumn();
       } else {
+        debugger
         this.props.createColumn(column, projectId).then(() => this.setState({ name: ''}));
       }
     } else {
@@ -26,17 +27,24 @@ class NewColumn extends React.Component {
 
   update() {
     return e => {
-      return this.setState({ name: this.state.name + e.key});
+      if (e.key === undefined){
+        return this.setState({ name: this.state.name.slice(0, -1)});
+      } else {
+        return this.setState({ name: this.state.name + e.key});
+      }
     };
   }
 
+
+
   render(){
-    const { deselectNewColumn, deselectEdit, closeDropdown } = this.props;
+    const { deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew } = this.props;
     return (
       <div className="column-wrapper"
         onClick={() => {
           deselectEdit();
           closeDropdown();
+          hideTaskNew();
         }}>
         <div className="board-column">
           <div className="draggable">
@@ -48,7 +56,10 @@ class NewColumn extends React.Component {
                 autoFocus></input>
             </form>
           </div>
-          <div className="board-column-body-new" onClick={() => deselectNewColumn()}>
+          <div className="board-column-body-new" onClick={() => {
+              deselectNewColumn();
+              hideTaskNew();
+            }}>
             <div className="add-card-new">
             </div>
             <div className="card-container-new">

@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Task = ({ task }) => {
+const Task = ({ task, hideTaskNew }) => {
   return (
-    <div className="draggable-task-wrapper">
+    <div className="draggable-task-wrapper" onClick={() => hideTaskNew()}>
       <div className="task-container">
         <div className="task-content">
           <div className="task-properties">

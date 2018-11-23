@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { deleteColumn, updateColumn } from '../../actions/column_actions';
 import Column from './column';
-import { selectEdit, deselectEdit, openDropdown, closeDropdown } from '../../actions/ui_actions';
+import { selectEdit, deselectEdit, openDropdown, closeDropdown, displayTaskNew, hideTaskNew } from '../../actions/ui_actions';
 
 const msp = (state, ownProps) => {
   const columnId = parseInt(ownProps.column.id);
@@ -16,7 +16,8 @@ const msp = (state, ownProps) => {
     currentColumn: state.entities.columns[state.session.currentColumnId],
     dropdown: state.ui.dropdown,
     tasks,
-    taskIds
+    taskIds,
+    creatingT: state.ui.creatingT
   };
 };
 
@@ -27,7 +28,9 @@ const mdp = dispatch => {
     selectEdit: (columnId) => dispatch(selectEdit(columnId)),
     deselectEdit: () => dispatch(deselectEdit()),
     openDropdown: (columnId) => dispatch(openDropdown(columnId)),
-    closeDropdown: () => dispatch(closeDropdown())
+    closeDropdown: () => dispatch(closeDropdown()),
+    displayTaskNew: (columnId) => dispatch(displayTaskNew(columnId)),
+    hideTaskNew: () => dispatch(hideTaskNew())
   };
 };
 

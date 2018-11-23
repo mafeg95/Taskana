@@ -6,6 +6,8 @@ export const OPEN_DROPDOWN = 'OPEN_DROPDOWN';
 export const CLOSE_DROPDOWN = 'CLOSE_DROPDOWN';
 export const DESELECT_EDIT = 'DESELECT_EDIT';
 export const SELECT_EDIT = 'SELECT_EDIT';
+export const OPEN_TASK_NEW = 'OPEN_TASK_NEW';
+export const CLOSE_TASK_NEW = 'CLOSE_TASK_NEW';
 
 export const openNav = () => {
   return {
@@ -63,5 +65,20 @@ export const deselectEdit = () => {
   return {
     type: DESELECT_EDIT,
     editing: false
+  };
+};
+
+export const hideTaskNew = () => {
+  return {
+    type: CLOSE_TASK_NEW,
+    creatingT: false
+  };
+};
+
+export const displayTaskNew = (columnId) => {
+  return {
+    type: OPEN_TASK_NEW,
+    creatingT: true,
+    columnId
   };
 };

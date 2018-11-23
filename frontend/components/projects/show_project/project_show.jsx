@@ -4,38 +4,17 @@ import Column from '../../columns/column_container';
 import NewColumn from '../../columns/new_column/new_column_form_container';
 
 class ProjectShow extends React.Component {
-  // constructor(props){
-  //   super(props);
-  //   // this.state = {
-  //   //   creating: false
-  //   // };
-  //   // this.creatingToggle = this.creatingToggle.bind(this);
-  //
-  // }
 
   componentDidMount(){
     this.props.requestProject(this.props.projectId);
+    this.buttonOrForm();
   }
 
   componentDidUpdate(prevProps){
-
     if ((prevProps.projectId != this.props.projectId) || (prevProps.columns.length != this.props.columns.length)){
       this.props.requestProject(this.props.projectId);
     }
   }
-
-  // creatingToggle(){
-  //   this.setState({creating: true })
-    // if (this.state.creating === false){
-    //   this.setState((state) => {
-    //     return {creating: true};
-    //   });
-    // } else {
-    //   this.setState(state => {
-    //     return {creating: false};
-    //   });
-    // }
-  // }
 
   buttonOrForm(){
     const { projectId } = this.props;
@@ -54,13 +33,15 @@ class ProjectShow extends React.Component {
   }
 
   render(){
-    const { columns, deselectEdit, deselectNewColumn } = this.props;
+    const { columns, deselectEdit, deselectNewColumn, hideTaskNew } = this.props;
     return (
       <div className="index-single-project" style={{marginLeft: this.props.sidebar ? '250px' : '0'}}>
         <div className="project-main" >
           <div className="function-wrapper">
             <div className="board">
-              <div className="board-body" onClick={() => deselectNewColumn()}>
+              <div className="board-body" onClick={() => {
+                  deselectNewColumn();
+                }}>
                 <div className="scrollable">
                   <div className="columns">
                     {columns.map(column => (
@@ -72,7 +53,10 @@ class ProjectShow extends React.Component {
                 </div>
               </div>
             </div>
-            <div className="scrollable-new" onClick={() => deselectEdit()}>
+            <div className="scrollable-new" onClick={() => {
+                deselectEdit();
+                hideTaskNew();
+              }}>
               {this.buttonOrForm()}
             </div>
           </div>

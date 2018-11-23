@@ -1,6 +1,7 @@
 import React from 'react';
 import merge from 'lodash/merge';
 import Task from '../tasks/task';
+import NewTask from '../tasks/new_task/new_task_simple_container';
 
 class Column extends React.Component {
   constructor(props){
@@ -14,13 +15,9 @@ class Column extends React.Component {
     this.deleteButton = this.deleteButton.bind(this);
   }
 
-
-
   taskIds(){
-
-    const { taskIds } = this.props;
-
-    return (taskIds.length > 0) ? "not-empty" : "empty";
+    const { taskIds, creatingT, currentColumn, column } = this.props;
+    return ((taskIds.length > 0) || (creatingT && currentColumn.id === column.id)) ? "not-empty" : "empty";
   }
   deleteButton(column) {
     const { deleteColumn, projectId, taskIds } = this.props;
@@ -42,7 +39,11 @@ class Column extends React.Component {
 
   update() {
     return e => {
-      return this.setState({ name: this.state.name + e.key});
+      if (e.key === undefined){
+        return this.setState({ name: this.state.name.slice(0, -1)});
+      } else {
+        return this.setState({ name: this.state.name + e.key});
+      }
     };
   }
 
@@ -77,7 +78,7 @@ class Column extends React.Component {
   }
 
   headerOrEdit(){
-    const { column, currentColumn, openDropdown, deselectEdit } = this.props;
+    const { column, currentColumn, openDropdown, deselectEdit, hideTaskNew } = this.props;
     if ((this.props.editing === false) || (column.id != currentColumn.id)){
       return (
         <div className="column-header-wrapper">
@@ -86,6 +87,7 @@ class Column extends React.Component {
             onClick={() => {
               openDropdown(column.id);
               deselectEdit();
+              hideTaskNew();
             }}></i>
         </div>);
     } else {
@@ -100,7 +102,7 @@ class Column extends React.Component {
   }
 
   render(){
-    const { column, projectId, deselectEdit, closeDropdown, dropdownOpen, currentColumn, tasks } = this.props;
+    const { column, projectId, deselectEdit, closeDropdown, dropdownOpen, currentColumn, tasks, displayTaskNew, hideTaskNew } = this.props;
     return (
       <div className="column-wrapper">
         <div className="board-column">
@@ -115,16 +117,22 @@ class Column extends React.Component {
               deselectEdit();
               closeDropdown();
             }}>
-            <div className="add-card">
-            </div>
+            <button className="add-card" onClick={() => displayTaskNew(column.id)}>
+              <i className="fas fa-plus plus-task"></i>
+            </button>
             <div className="card-container">
               <div className={this.taskIds()}>
                 <div className="card-scrollable">
                   <div className="cards">
-                    {tasks.map(task => (
+                    <NewTask projectId={projectId}
+                      columnId={column.id}/>
+                    <div className="tasks-main" onClick={() => hideTaskNew()}>
+                      {tasks.map(task => (
                       <Task key={task.id}
-                        task={task}/>
+                        task={task}
+                        hideTaskNew={hideTaskNew}/>
                     ))}
+                    </div>
                   </div>
                 </div>
               </div>
