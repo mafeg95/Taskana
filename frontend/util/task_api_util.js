@@ -1,5 +1,5 @@
 export const createTask = (task, columnId, projectId) => {
-  debugger
+
   return $.ajax({
     method: 'POST',
     url: `api/projects/${projectId}/columns/${columnId}/tasks/`,

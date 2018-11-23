@@ -37,7 +37,7 @@ export const removeColumn = (payload) => {
 // };
 
 export const createColumn = (column, projectId) => dispatch => {
-  debugger
+
   return ColumnAPIUtil.createColumn(column, projectId).then(res => {
     return dispatch(receiveColumn(res));
   });

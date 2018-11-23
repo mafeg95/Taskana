@@ -18,7 +18,7 @@ export const removeTask = task => {
 };
 
 export const createTask = (task, columnId, projectId) => dispatch => {
-  debugger
+
   return TaskAPIUtil.createTask(task, columnId, projectId).then(res => (
     dispatch(receiveTask(res))
   ));

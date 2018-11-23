@@ -21,7 +21,7 @@ class NewTask extends React.Component {
       if (this.state.title === ''){
         this.props.hideTaskNew();
       } else {
-        debugger
+
         createTask(task, columnId, projectId).then(() => this.setState({ title: ''}));
       }
     } else {
@@ -31,7 +31,7 @@ class NewTask extends React.Component {
 
   update() {
     return e => {
-      debugger
+
       if (e.key === undefined){
         return this.setState({ title: this.state.title.slice(0, -1)});
       } else {
@@ -42,7 +42,7 @@ class NewTask extends React.Component {
 
   render(){
     const { creatingT, currentColumn, columnId } = this.props;
-    debugger
+
     return (
       <div className={(creatingT && (currentColumn.id === columnId)) ? "draggable-task-wrapper" : "task-wrapper-none"}>
         <div className={(creatingT && (currentColumn.id === columnId)) ? "task-container" : "container-none"}>
