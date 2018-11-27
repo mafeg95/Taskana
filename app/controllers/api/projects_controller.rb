@@ -27,7 +27,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   def index
-    @projects = current_user.projects
+    @projects = current_user.projects.includes(columns: [:tasks])
     render :index
   end
 
