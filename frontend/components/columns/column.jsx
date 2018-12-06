@@ -1,6 +1,6 @@
 import React from 'react';
 import merge from 'lodash/merge';
-import Task from '../tasks/task';
+import Task from '../tasks/task_container';
 import NewTask from '../tasks/new_task/new_task_simple_container';
 
 class Column extends React.Component {
@@ -19,6 +19,7 @@ class Column extends React.Component {
     const { taskIds, creatingT, currentColumn, column } = this.props;
     return ((taskIds.length > 0) || (creatingT && currentColumn.id === column.id)) ? "not-empty" : "empty";
   }
+
   deleteButton(column) {
     const { deleteColumn, projectId, taskIds } = this.props;
     return (taskIds.length > 0) ? <span className="no-delete"></span> : <button className="column-menu-item" onClick={() => deleteColumn(column.id, projectId)}><span className="column-menu-item-label">Delete</span></button>;
@@ -49,10 +50,10 @@ class Column extends React.Component {
 
   dropdownOpen(){
     const { dropdown, column, currentColumn, selectEdit, closeDropdown, deleteButton } = this.props;
-
     if (!currentColumn){
       return <div className="no-dropdown"></div>;
     } else if ((dropdown === true ) && (column.id === currentColumn.id)){
+
 
       return (
         <div className="layer-positioner">
@@ -102,7 +103,7 @@ class Column extends React.Component {
   }
 
   render(){
-    const { column, projectId, deselectEdit, closeDropdown, dropdownOpen, currentColumn, tasks, displayTaskNew, hideTaskNew } = this.props;
+    const { column, projectId, deselectEdit, closeDropdown, dropdownOpen, currentColumn, tasks, displayTaskNew, hideTaskNew, openDropdownTask } = this.props;
     return (
       <div className="column-wrapper">
         <div className="board-column">
@@ -130,7 +131,8 @@ class Column extends React.Component {
                       {tasks.map(task => (
                       <Task key={task.id}
                         task={task}
-                        hideTaskNew={hideTaskNew}/>
+                        columnId={column.id}
+                        projectId={projectId}/>
                     ))}
                     </div>
                   </div>

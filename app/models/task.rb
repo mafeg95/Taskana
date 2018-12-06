@@ -16,8 +16,7 @@
 class Task < ApplicationRecord
   validates :title, :author_id, :column_id, presence: true
 
-  belongs_to :column,
-    dependent: :destroy
+  belongs_to :column
 
   belongs_to :author,
     foreign_key: :author_id,

@@ -8,6 +8,8 @@ export const DESELECT_EDIT = 'DESELECT_EDIT';
 export const SELECT_EDIT = 'SELECT_EDIT';
 export const OPEN_TASK_NEW = 'OPEN_TASK_NEW';
 export const CLOSE_TASK_NEW = 'CLOSE_TASK_NEW';
+export const OPEN_DROPDOWN_TASK = 'OPEN_DROPDOWN_TASK';
+export const CLOSE_DROPDOWN_TASK = 'CLOSE_DROPDOWN_TASK';
 
 export const openNav = () => {
   return {
@@ -35,6 +37,21 @@ export const selectNewColumn = () => {
   return {
     type: SELECT_NEW,
     creating: true
+  };
+};
+
+export const openDropdownTask = (taskId) => {
+  return {
+    type: OPEN_DROPDOWN_TASK,
+    dropdownTask: true,
+    taskId
+  };
+};
+
+export const closeDropdownTask = () => {
+  return {
+    type: CLOSE_DROPDOWN_TASK,
+    dropdownTask: false,
   };
 };
 

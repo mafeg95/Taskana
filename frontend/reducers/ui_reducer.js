@@ -5,6 +5,7 @@ import creating from './selection_reducer';
 import editing from './edit_reducer';
 import dropdown from './dropdown_reducer';
 import creatingT from './create_task_reducer';
+import dropdownTask from './dropdown_task';
 
 export default combineReducers({
   modal,
@@ -12,5 +13,6 @@ export default combineReducers({
   creating,
   editing,
   dropdown,
-  creatingT
+  creatingT,
+  dropdownTask
 });
