@@ -18,7 +18,7 @@ const ColumnsReducer = (state = {}, action) => {
     case RECEIVE_TASK:
       newState = merge({}, state);
       if (!newState[action.payload.task.column_id].task_ids.includes(action.payload.task.id)){
-        newState[action.payload.task.column_id].task_ids.push(action.payload.task.id);
+        newState[action.payload.task.column_id].task_ids.unshift(action.payload.task.id);
       }
       return newState;
     case REMOVE_TASK:

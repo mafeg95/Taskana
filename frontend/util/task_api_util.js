@@ -20,3 +20,10 @@ export const deleteTask = (taskId, columnId, projectId) => {
     url: `api/projects/${projectId}/columns/${columnId}/tasks/${taskId}`
   });
 };
+
+export const fetchTask = (taskId, columnId, projectId) => {
+  return $.ajax({
+    method: 'GET',
+    url: `api/projects/${projectId}/columns/${columnId}/tasks/${taskId}`
+  });
+};

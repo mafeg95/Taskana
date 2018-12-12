@@ -1,3 +1,3 @@
 json.task do
-  json.extract! @task, :id, :title, :body, :author_id, :column_id
+  json.extract! @task, :id, :title, :description, :author_id, :completed, :column_id
 end

@@ -28,9 +28,14 @@ class Api::TasksController < ApplicationController
     render :show
   end
 
+  def show
+    @task = Task.find(params[:id])
+    render :show
+  end
+
   private
 
   def task_params
-    params.require(:task).permit(:title, :body, :due_date)
+    params.require(:task).permit(:title, :description, :due_date, :completed)
   end
 end

@@ -48,7 +48,7 @@ class Splash extends React.Component {
   }
 
   greeting() {
-    const { currentUser, logout, openModal, deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew } = this.props;
+    const { currentUser, logout, openModal, deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew, closeDropdownTask } = this.props;
     return (
       <section>
         <header>
@@ -57,6 +57,7 @@ class Splash extends React.Component {
               deselectEdit();
               closeDropdown();
               hideTaskNew();
+              closeDropdownTask();
             }}>
             <div className="left">
               <button className="ham-button" onClick={this.props.openNav}>&#9776;</button>

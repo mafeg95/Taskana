@@ -35,3 +35,9 @@ export const deleteTask = (taskId, columnId, projectId) => dispatch => {
     dispatch(removeTask(res))
   ));
 };
+
+export const fetchTask = (taskId, columnId, projectId) => dispatch => {
+  return TaskAPIUtil.fetchTask(taskId, columnId, projectId).then(res => (
+    dispatch(receiveTask(res))
+  ));
+};

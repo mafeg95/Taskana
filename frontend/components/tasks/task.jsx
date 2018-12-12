@@ -32,14 +32,16 @@ class Task extends React.Component {
   }
 
   render(){
-    const { task, hideTaskNew, openDropdownTask, deselectEdit, deselectNewColumn } = this.props;
+    const { dropdownTask2, task, hideTaskNew, openDropdownTask, deselectEdit, deselectNewColumn, openModal, projectId, closeModal, closeDropdownTask } = this.props;
     return (
-      <div className="draggable-task-wrapper" onClick={() => hideTaskNew()}>
-        <div className="task-container">
+      <div className="draggable-task-wrapper">
+        <div className="task-container" onClick={() => hideTaskNew()}>
           <div className="task-content">
             <div className="task-properties">
               <div className="task-properties-title">
-                <h1>{task.title}</h1>
+                <h1 className="task-h1" onClick={() => openModal('Task Modal', projectId, task.id)}>
+                  {task.title}
+                </h1>
                   <i className="fas task-angle-down fa-angle-down"
                     onClick={() => {
                       openDropdownTask(task.id);
@@ -48,11 +50,11 @@ class Task extends React.Component {
                       hideTaskNew();
                     }}></i>
               </div>
-              <div className="task-dropdown">
+              <div className="task-dropdown" >
                 {this.dropdownTaskOpen()}
               </div>
             </div>
-            <div className="task-meta-data">
+            <div className="task-meta-data" onClick={() => openModal('Task Modal', projectId, task.id)}>
             </div>
           </div>
         </div>

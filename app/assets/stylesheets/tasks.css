@@ -21,6 +21,7 @@
 .task-properties{
   display: flex;
   margin-bottom: 5px;
+  resize: auto;
 }
 
 .task-properties-title{
@@ -37,4 +38,11 @@
 .task-meta-data{
   display: flex;
   height: 22px;
+  cursor: pointer;
+}
+
+.task-h1{
+  width: 85%;
+  cursor: pointer;
+  min-width: 213px;
 }
