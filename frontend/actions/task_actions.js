@@ -10,10 +10,10 @@ export const receiveTask = payload => {
   };
 };
 
-export const removeTask = task => {
+export const removeTask = payload => {
   return {
     type: REMOVE_TASK,
-    task
+    payload
   };
 };
 
@@ -31,7 +31,13 @@ export const updateTask = (task, columnId, projectId) => dispatch => {
 };
 
 export const deleteTask = (taskId, columnId, projectId) => dispatch => {
-  return TaskAPIUtil.deleteTask(taskId, columnId, projectId).then(task => (
-    dispatch(removeTask(task))
+  return TaskAPIUtil.deleteTask(taskId, columnId, projectId).then(res => (
+    dispatch(removeTask(res))
+  ));
+};
+
+export const fetchTask = (taskId, columnId, projectId) => dispatch => {
+  return TaskAPIUtil.fetchTask(taskId, columnId, projectId).then(res => (
+    dispatch(receiveTask(res))
   ));
 };

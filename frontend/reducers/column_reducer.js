@@ -1,6 +1,6 @@
 import { RECEIVE_COLUMN, REMOVE_COLUMN } from '../actions/column_actions';
 import { RECEIVE_PROJECT } from '../actions/project_actions';
-import { RECEIVE_TASK } from '../actions/task_actions';
+import { RECEIVE_TASK, REMOVE_TASK } from '../actions/task_actions';
 import merge from 'lodash/merge';
 
 const ColumnsReducer = (state = {}, action) => {
@@ -18,8 +18,13 @@ const ColumnsReducer = (state = {}, action) => {
     case RECEIVE_TASK:
       newState = merge({}, state);
       if (!newState[action.payload.task.column_id].task_ids.includes(action.payload.task.id)){
-        newState[action.payload.task.column_id].task_ids.push(action.payload.task.id);
+        newState[action.payload.task.column_id].task_ids.unshift(action.payload.task.id);
       }
+      return newState;
+    case REMOVE_TASK:
+      newState = merge({}, state);
+      const taskIds = newState[action.payload.task.column_id].task_ids;
+      taskIds.splice(taskIds.indexOf(action.payload.task.id), 1);
       return newState;
     default:
       return state;

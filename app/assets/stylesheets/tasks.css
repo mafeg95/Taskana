@@ -21,6 +21,7 @@
 .task-properties{
   display: flex;
   margin-bottom: 5px;
+  resize: auto;
 }
 
 .task-properties-title{
@@ -29,17 +30,19 @@
   line-height: 20px;
   width: 100%;
   word-wrap: break-word;
-  display: inline-block;
+  display: flex;
   box-sizing: border-box;
+  justify-content: space-between;
 }
 
 .task-meta-data{
   display: flex;
   height: 22px;
+  cursor: pointer;
 }
 
-.task-dropdown{
-  margin-left: 10px;
-  margin-right: -5px;
-  padding: 2px 5px;
+.task-h1{
+  width: 85%;
+  cursor: pointer;
+  min-width: 213px;
 }

@@ -11,12 +11,6 @@ class Api::ColumnsController < ApplicationController
     end
   end
 
-  # def index
-  #   @project = Project.find(params[:project_id])
-  #   @columns = @project.columns
-  #   render 'api/projects/show'
-  # end
-
   def update
     @column = Column.find(params[:id])
     if @column.update(column_params)
@@ -27,7 +21,9 @@ class Api::ColumnsController < ApplicationController
   end
 
   def destroy
+      
     @column = Column.find(params[:id])
+
     @column.destroy
     render :show
   end

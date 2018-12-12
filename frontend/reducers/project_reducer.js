@@ -15,16 +15,17 @@ const ProjectsReducer = (state = {}, action) => {
       delete newState[action.projectId];
       return newState;
     case RECEIVE_COLUMN:
-
       newState = merge({}, state);
       if (!newState[action.payload.column.project_id].column_ids.includes(action.payload.column.id)){
         newState[action.payload.column.project_id].column_ids.push(action.payload.column.id);
       }
       return newState;
     case REMOVE_COLUMN:
+
       newState = merge({}, state);
       const columnIds = newState[action.payload.column.project_id].column_ids;
       columnIds.splice(columnIds.indexOf(action.payload.column.id), 1);
+
       return newState;
     default:
       return state;

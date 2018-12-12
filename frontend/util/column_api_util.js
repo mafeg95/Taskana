@@ -23,6 +23,7 @@ export const updateColumn = (column, projectId) => {
 };
 
 export const deleteColumn = (columnId, projectId) => {
+  
   return $.ajax({
     method: 'DELETE',
     url: `api/projects/${projectId}/columns/${columnId}`

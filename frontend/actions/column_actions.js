@@ -53,7 +53,8 @@ export const updateColumn = (column, projectId) => dispatch => {
 
 export const deleteColumn = (columnId, projectId) => dispatch => {
 
-  return ColumnAPIUtil.deleteColumn(columnId, projectId).then(res => (
-    dispatch(removeColumn(res))
-  ));
+  return ColumnAPIUtil.deleteColumn(columnId, projectId).then(res => {
+
+    return dispatch(removeColumn(res));
+  });
 };

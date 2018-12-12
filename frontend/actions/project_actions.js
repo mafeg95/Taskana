@@ -14,6 +14,7 @@ export const receiveProjects = (projects) => {
 };
 
 export const receiveProject = ({project, columns, tasks}) => {
+
   return {
     type: RECEIVE_PROJECT,
     project,
@@ -49,16 +50,18 @@ export const requestAllProjects = () => dispatch => {
 };
 
 export const requestProject = id => dispatch => {
-  return ProjectAPIUtil.fetchSingleProject(id).then(payload => (
-    dispatch(receiveProject(payload))
-  ), err => (dispatch(receiveErrors(err.responseJSON))));
+  return ProjectAPIUtil.fetchSingleProject(id).then(payload => {
+
+    return dispatch(receiveProject(payload));
+  }, err => (dispatch(receiveErrors(err.responseJSON))));
 };
 
 export const createProject = project => dispatch => {
 
-  return ProjectAPIUtil.createProject(project).then(project => (
-    dispatch(receiveProject(project))
-  ), err => (dispatch(receiveErrors(err.responseJSON))));
+  return ProjectAPIUtil.createProject(project).then(project => {
+
+    return dispatch(receiveProject(project));
+  }, err => (dispatch(receiveErrors(err.responseJSON))));
 };
 
 export const updateProject = project => dispatch => {

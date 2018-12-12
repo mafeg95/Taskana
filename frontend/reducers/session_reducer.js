@@ -1,9 +1,9 @@
 import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_actions';
 import { OPEN_MODAL } from '../actions/modal_actions';
 import { RECEIVE_PROJECT } from '../actions/project_actions';
-import { SELECT_EDIT, OPEN_DROPDOWN, OPEN_TASK_NEW } from '../actions/ui_actions';
+import { SELECT_EDIT, OPEN_DROPDOWN, OPEN_TASK_NEW, OPEN_DROPDOWN_TASK } from '../actions/ui_actions';
 import merge from 'lodash/merge';
-const defaultState = { currentUserId: null, currentProjectId: null, currentColumnId: null};
+const defaultState = { currentUserId: null, currentProjectId: null, currentColumnId: null, currentTaskId: null};
 
 const sessionReducer = (state = defaultState, action) => {
 
@@ -14,7 +14,8 @@ const sessionReducer = (state = defaultState, action) => {
     case LOGOUT_CURRENT_USER:
       return defaultState;
     case OPEN_MODAL:
-      return Object.assign({}, state, {currentProjectId: action.projectId});
+
+      return Object.assign({}, state, {currentProjectId: action.projectId, currentTaskId: action.taskId});
     case RECEIVE_PROJECT:
       return merge({}, state, {currentProjectId: action.project.id});
     case SELECT_EDIT:
@@ -23,6 +24,8 @@ const sessionReducer = (state = defaultState, action) => {
       return merge({}, state, {currentColumnId: action.columnId});
     case OPEN_TASK_NEW:
       return merge({}, state, {currentColumnId: action.columnId});
+    case OPEN_DROPDOWN_TASK:
+      return merge({}, state, {currentTaskId: action.taskId});
     default:
       return state;
   }

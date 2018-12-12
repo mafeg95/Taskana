@@ -8,6 +8,7 @@ class Api::TasksController < ApplicationController
     if @task.save
       render :show
     else
+
       render json: @task.errors.full_messages, status: 422
     end
   end
@@ -22,14 +23,19 @@ class Api::TasksController < ApplicationController
   end
 
   def destroy
-    @task = Task.find(parmas[:id])
+    @task = Task.find(params[:id])
     @task.destroy
+    render :show
+  end
+
+  def show
+    @task = Task.find(params[:id])
     render :show
   end
 
   private
 
   def task_params
-    params.require(:task).permit(:title, :body, :due_date)
+    params.require(:task).permit(:title, :description, :due_date, :completed)
   end
 end

@@ -23,7 +23,7 @@
 .scrollable {
   position: relative;
   padding: 35px 10px 0;
-  overflow-x: auto;
+  /* overflow-x: auto; */
   height: 100%;
 }
 

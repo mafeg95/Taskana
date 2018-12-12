@@ -72,6 +72,16 @@
   padding: 0 20px;
 }
 
+.task-angle-down{
+  padding: 0 0 0 20px;
+  cursor: pointer;
+  z-index: 20;
+}
+
 .column-header-wrapper{
   display: flex;
+}
+
+.no-dropdown{
+  display: none;
 }

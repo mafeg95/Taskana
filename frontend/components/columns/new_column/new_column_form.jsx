@@ -17,7 +17,11 @@ class NewColumn extends React.Component {
       if (this.state.name === ''){
         this.props.deselectNewColumn();
       } else {
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> tasks
         this.props.createColumn(column, projectId).then(() => this.setState({ name: ''}));
       }
     } else {

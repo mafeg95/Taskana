@@ -4,13 +4,14 @@ class NewTask extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      title: ''
+      title: '',
+      completed: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidUpdate(prevProps){
-    this._input.focus();
+    this._textarea.focus();
   }
 
   handleSubmit(e) {
@@ -50,11 +51,12 @@ class NewTask extends React.Component {
             <div className={(creatingT && (currentColumn.id === columnId)) ? "task-properties" : "properties-none"}>
               <div className={(creatingT && (currentColumn.id === columnId)) ? "task-properties-title" : "properties-title-none"}>
                 <form className={(creatingT && (currentColumn.id === columnId)) ? "new-task-form" : "new-task-form-none"} onKeyPress={this.handleSubmit}>
-                  <input type="text" className="new-task-title"
+                  <textarea type="text" className="new-task-title"
+                    rows="1"
                     onChange={this.update()}
                     value={this.state.title}
-                    ref={c => this._input = c}
-                    ></input>
+                    ref={c => this._textarea = c}
+                    ></textarea>
                 </form>
               </div>
               <div className="task-dropdown">
