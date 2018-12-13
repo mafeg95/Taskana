@@ -11,6 +11,7 @@ export const createTask = (task, columnId, projectId) => {
 };
 
 export const updateTask = (task, columnId, projectId) => {
+  //test
   return $.ajax({
     method: 'PATCH',
     url: `api/projects/${projectId}/columns/${columnId}/tasks/${task.id}`,

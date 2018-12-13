@@ -8,7 +8,6 @@ import { updateTask, fetchTask } from '../../../actions/task_actions';
 const msp =({ session, entities }) => {
   const task = entities.tasks[session.currentTaskId] || {};
   const column = entities.columns[task.column_id] || {}
-  debugger
   return {
     project: entities.projects[session.currentProjectId],
     task,
@@ -18,7 +17,8 @@ const msp =({ session, entities }) => {
 
 const mdp = dispatch => {
   return {
-    updateTask: (task, columnId, projectId) => dispatch(updateTask(task, columnId, projectId)),
+    updateTask: (task, columnId, projectId) => {
+      return dispatch(updateTask(task, columnId, projectId))},
     closeModal: () => dispatch(closeModal()),
     fetchTask: (id, columnId, projectId) => dispatch(fetchTask(id, columnId, projectId))
   }

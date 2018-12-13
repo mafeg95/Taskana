@@ -46,5 +46,9 @@
   "bugs": {
     "url": "https://github.com/mafeg95/Taskana/issues"
   },
-  "homepage": "https://github.com/mafeg95/Taskana#readme"
+  "homepage": "https://github.com/mafeg95/Taskana#readme",
+  "devDependencies": {
+    "css-loader": "^2.0.0",
+    "style-loader": "^0.23.1"
+  }
 }
