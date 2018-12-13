@@ -263,7 +263,7 @@
   border-style: solid;
   color: #222b37;
   fill: #222b37;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .date-token-button:hover{
@@ -272,7 +272,7 @@
   border-style: solid;
   color: #222b37;
   fill: #222b37;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .due-date-task-token{
@@ -336,4 +336,12 @@
   border-radius: 4px;
   align-items: center;
   font-size: 13px;
+}
+
+.date-picker{
+  color: #646f79;
+  font-family: inherit;
+  font-size: 13px;
+  border: none;
+  cursor: pointer;
 }

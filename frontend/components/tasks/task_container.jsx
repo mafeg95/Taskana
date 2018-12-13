@@ -7,7 +7,7 @@ import { deselectEdit, closeDropdown, openDropdownTask, closeDropdownTask, hideT
 import { openModal, closeModal } from '../../actions/modal_actions';
 
 const msp = (state, ownProps) => {
-  debugger
+
   const task = state.entities.tasks[parseInt(ownProps.task.id)];
 
   return {

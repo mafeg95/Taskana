@@ -1,36 +1,66 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
+import 'style-loader!css-loader!react-datepicker/dist/react-datepicker.css';
 
 
 class TaskForm extends React.Component {
   constructor(props){
     super(props);
     this.state = {
+      id: props.task.id,
       title: props.task.title,
       description: props.task.description,
-      completed: props.task.completed
+      completed: props.task.completed,
+      due_date: props.task.due_date,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.toggleComplete = this.toggleComplete.bind(this);
+    this.handleDateChange =this.handleDateChange.bind(this);
+    // this.setDateButton = this.setDateButton.bind(this);
+    // this.setDueDate = this.setDueDate.bind(this);
   }
 
   handleSubmit(e){
     e.preventDefault();
     const { task, column, project, updateTask, closeModal } = this.props;
-    debugger
     this.update(e.target.id)(e);
-    const newTask = Object.assign(task, this.state);
+    const newTask = Object.assign({}, this.state);
     updateTask(newTask, column.id, project.id);
   }
 
   componentDidUpdate(prevProps){
     const { task, column, project, fetchTask, updateTask } = this.props;
-    if ((prevProps.task.title != this.state.title || prevProps.task.description != this.state.description || this.state.completed != prevProps.task.completed)){ // this.state.title
+
+    if (this.needsUpdate(prevProps, this.state)){ // this.state.title
       const newTask = Object.assign(task, this.state);
       updateTask(newTask, column.id, project.id);
-      fetchTask(newTask.id, column.id, project.id);
+    }
+  }
+
+  needsUpdate(prevProps, state){
+    const prevDate = prevProps.task.due_date != "" ? new Date(prevProps.task.due_date) : "";
+    const date = this.state.due_date != "" ? new Date(this.state.due_date) : "";
+    if (prevProps.task.title != state.title){
+      return true;
+    } else if (prevProps.task.description != state.description) {
+      return true;
+    } else if (prevProps.task.completed != state.completed) {
+      return true;
+    } else if (this.myGetTime(prevDate) != this.myGetTime(date)) {
+      // debugger
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  myGetTime(date){
+    if (date === ""){
+      return new Date(null).getTime();
+    } else {
+      return date.getTime();
     }
   }
 
@@ -54,7 +84,6 @@ class TaskForm extends React.Component {
   }
 
   toggleLabel(){
-    debugger
     if(this.state.completed === false){
       return "Mark Complete";
     } else if (this.state.completed === true) {
@@ -62,9 +91,34 @@ class TaskForm extends React.Component {
     }
   }
 
+  handleDateChange(date){
+
+    this.setState({
+      due_date: date
+    });
+  }
+
+  // setDueDate(){
+  //   if (!this.state.due_date){
+  //
+  //     this.setState({due_date: this.state.due_date || null);
+  //   }
+  // }
+
+  // setDateButton(){
+  //
+  //   if (!this.state.due_date){
+  //
+  //   } else {
+  //
+  //     return (
+  //
+  //       );
+  //   }
+  // }
+
   render(){
     const { task, column, project, closeModal } = this.props;
-    debugger
     return (
       <section className="task-pane">
         <div className="single-task-pane">
@@ -93,14 +147,22 @@ class TaskForm extends React.Component {
               <div className="assignee-date-task">
                 <div className="due-date-task">
                   <div className="due-date-task-token">
-                    <div className="date-token-button">
+                    <div className="date-token-button" >
                       <div className="task-token-icon">
                         <div className="task-icon">
                           <i className="fas fa-calendar fa-task"></i>
                         </div>
                       </div>
                       <div className="task-token-label">
-                        Due Date
+                        <DatePicker
+                          selected={this.state.due_date != null ? new Date(this.state.due_date) : null}
+                          onChange={this.handleDateChange}
+                          dateFormat="MMMM d, yyyy"
+                          className="date-picker"
+                          placeholderText="Due Date"
+                          minDate={new Date()}
+                          showDisabledMonthNavigation
+                          ></DatePicker>
                       </div>
                     </div>
                   </div>

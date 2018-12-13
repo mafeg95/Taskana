@@ -11,7 +11,7 @@ end
   json.tasks do
     column.tasks.each do |task|
       json.set! task.id do
-        json.extract! task, :id, :title, :description, :completed, :author_id, :column_id
+        json.extract! task, :id, :title, :description, :completed, :author_id, :column_id, :due_date
       end
     end
   end
