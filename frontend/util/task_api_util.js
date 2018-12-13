@@ -1,8 +1,4 @@
 export const createTask = (task, columnId, projectId) => {
-<<<<<<< HEAD
-
-=======
->>>>>>> tasks
   return $.ajax({
     method: 'POST',
     url: `api/projects/${projectId}/columns/${columnId}/tasks/`,

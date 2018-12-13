@@ -6,11 +6,7 @@ import { createTask } from '../../../actions/task_actions';
 import { hideTaskNew } from '../../../actions/ui_actions';
 
 const msp = (state, ownProps) => {
-<<<<<<< HEAD
 
-=======
-  
->>>>>>> tasks
   return {
     creatingT: state.ui.creatingT,
     projectId: ownProps.projectId,

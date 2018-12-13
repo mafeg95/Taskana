@@ -1,5 +1,6 @@
 .index-single-project {
   height: 100%;
+  transition: margin-left 400ms ease-out,transform 400ms ease-out;
 }
 
 .project-main{

@@ -250,7 +250,7 @@ footer > p {
 }
 
 .low-left{
-  transition: margin-left 250ms ease-out,transform 250ms ease-out;
+  transition: margin-left 300ms ease-out,transform 300ms ease-out;
   font-size: 20px;
 }
 
