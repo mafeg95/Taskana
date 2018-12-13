@@ -39,7 +39,10 @@ class Task extends React.Component {
           <div className="task-content">
             <div className="task-properties">
               <div className="task-properties-title">
-                <h1 className="task-h1" onClick={() => openModal('Task Modal', projectId, task.id)}>
+                <h1 className="task-h1" onClick={() => {
+                    openModal('Task Modal', projectId, task.id);
+                    closeDropdownTask();
+                  }}>
                   {task.title}
                 </h1>
                   <i className="fas task-angle-down fa-angle-down"
@@ -54,7 +57,10 @@ class Task extends React.Component {
                 {this.dropdownTaskOpen()}
               </div>
             </div>
-            <div className="task-meta-data" onClick={() => openModal('Task Modal', projectId, task.id)}>
+            <div className="task-meta-data" onClick={() => {
+                openModal('Task Modal', projectId, task.id);
+                closeDropdownTask();
+              }}>
             </div>
           </div>
         </div>

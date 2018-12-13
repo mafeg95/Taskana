@@ -79,7 +79,7 @@ class Column extends React.Component {
   }
 
   headerOrEdit(){
-    const { column, currentColumn, openDropdown, deselectEdit, hideTaskNew } = this.props;
+    const { column, currentColumn, openDropdown, deselectEdit, hideTaskNew, closeDropdownTask } = this.props;
     if ((this.props.editing === false) || (column.id != currentColumn.id)){
       return (
         <div className="column-header-wrapper">
@@ -89,6 +89,7 @@ class Column extends React.Component {
               openDropdown(column.id);
               deselectEdit();
               hideTaskNew();
+              closeDropdownTask();
             }}></i>
         </div>);
     } else {
@@ -103,12 +104,12 @@ class Column extends React.Component {
   }
 
   render(){
-    const { column, projectId, deselectEdit, closeDropdown, dropdownOpen, currentColumn, tasks, displayTaskNew, hideTaskNew, openDropdownTask } = this.props;
+    const { column, projectId, deselectEdit, closeDropdown, dropdownOpen, currentColumn, tasks, displayTaskNew, hideTaskNew, openDropdownTask, closeDropdownTask } = this.props;
     return (
       <div className="column-wrapper">
         <div className="board-column">
           <div className="draggable">
-            <div className="board-column-header">
+            <div className="board-column-header" onClick={() => closeDropdownTask()}>
               {this.headerOrEdit()}
               {this.dropdownOpen()}
             </div>

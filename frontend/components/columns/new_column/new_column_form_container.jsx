@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import NewColumn from './new_column_form';
 import { createColumn } from '../../../actions/column_actions';
 import React from 'react';
-import { deselectEdit, closeDropdown, hideTaskNew } from '../../../actions/ui_actions';
+import { deselectEdit, closeDropdown, hideTaskNew, closeDropdownTask } from '../../../actions/ui_actions';
 
 const msp = (state, ownProps) => {
 
@@ -16,7 +16,8 @@ const mdp = dispatch => {
     createColumn: (column, projectId) => dispatch(createColumn(column, projectId)),
     deselectEdit: () => dispatch(deselectEdit()),
     closeDropdown: () => dispatch(closeDropdown()),
-    hideTaskNew: () => dispatch(hideTaskNew())
+    hideTaskNew: () => dispatch(hideTaskNew()),
+    closeDropdownTask: () => dispatch(closeDropdownTask())
   };
 };
 

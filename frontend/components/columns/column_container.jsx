@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 
 import { deleteColumn, updateColumn } from '../../actions/column_actions';
 import Column from './column';
-import { selectEdit, deselectEdit, openDropdown, closeDropdown, displayTaskNew, hideTaskNew, openDropdownTask } from '../../actions/ui_actions';
+import { selectEdit, deselectEdit, openDropdown, closeDropdown, displayTaskNew, hideTaskNew, openDropdownTask, closeDropdownTask } from '../../actions/ui_actions';
 
 const msp = (state, ownProps) => {
   const columnId = parseInt(ownProps.column.id);
   const column = state.entities.columns[columnId];
-  // 
+  //
   const tasks = ((column && column.task_ids) ? column.task_ids.map(id => state.entities.tasks[id]) : []);
   const taskIds = column.task_ids;
   return {
@@ -32,7 +32,8 @@ const mdp = dispatch => {
     closeDropdown: () => dispatch(closeDropdown()),
     displayTaskNew: (columnId) => dispatch(displayTaskNew(columnId)),
     hideTaskNew: () => dispatch(hideTaskNew()),
-    openDropdownTask: () => dispatch(openDropdownTask())
+    openDropdownTask: () => dispatch(openDropdownTask()),
+    closeDropdownTask: () => dispatch(closeDropdownTask())
   };
 };
 

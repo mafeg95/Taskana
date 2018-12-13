@@ -49,6 +49,7 @@ class Splash extends React.Component {
 
   greeting() {
     const { currentUser, logout, openModal, deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew, closeDropdownTask } = this.props;
+
     return (
       <section>
         <header>
@@ -68,7 +69,7 @@ class Splash extends React.Component {
               </div>
               <div className="right">
                 <button className="header-new" onClick={() => openModal('Create Project')}>+ New</button>
-                <button className="user-menu">{currentUser.username}</button>
+                <button className="user-menu">{this.props.name}</button>
                 <button className="header-button" onClick={logout}>Log Out</button>
               </div>
             </div>

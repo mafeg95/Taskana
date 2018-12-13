@@ -11,7 +11,7 @@ class AsideSectionProjectIndex extends React.Component {
 
 
   render(){
-    const { projects, deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew } = this.props;
+    const { projects, deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew, closeDropdownTask } = this.props;
     return (
       <aside id="aside-index" className="aside-index"
         style={{ width: this.props.sidebar ? '250px' : "0" }}
@@ -20,6 +20,7 @@ class AsideSectionProjectIndex extends React.Component {
           deselectEdit();
           closeDropdown();
           hideTaskNew();
+          closeDropdownTask();
         }}>
         <section className="aside-project-index" >
           <div className="aside-top">

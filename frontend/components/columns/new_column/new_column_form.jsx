@@ -38,13 +38,14 @@ class NewColumn extends React.Component {
 
 
   render(){
-    const { deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew } = this.props;
+    const { deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew, closeDropdownTask } = this.props;
     return (
       <div className="column-wrapper"
         onClick={() => {
           deselectEdit();
           closeDropdown();
           hideTaskNew();
+          closeDropdownTask();
         }}>
         <div className="board-column">
           <div className="draggable">
