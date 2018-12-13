@@ -38,7 +38,7 @@
   transition: margin-left 250ms ease-out,transform 200ms ease-out;
   height: 100%;
   position: fixed;
-  z-index: 20;
+  z-index: 40;
   top: 0;
   left: 0;
   overflow-x: hidden;
