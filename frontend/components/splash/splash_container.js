@@ -6,13 +6,11 @@ import { openNav, deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew, c
 import { withRouter } from 'react-router-dom';
 
 const msp = ({ session, entities, ui }, ownProps) => {
-  const splitName = currentUser.username.split(' ');
-  const name = splitName[0][0] + splitName[1][0];
+
   return {
     currentUser: entities.users[session.currentUserId],
     sidebar: ui.sidebar,
     currentProject: (ownProps.location.pathname === '/') ? null : entities.projects[session.currentProjectId],
-    name
   };
 };
 

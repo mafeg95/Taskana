@@ -50,6 +50,9 @@ class Splash extends React.Component {
   greeting() {
     const { currentUser, logout, openModal, deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew, closeDropdownTask } = this.props;
 
+    const splitName = currentUser.username.split(' ');
+    const name = splitName[0][0] + splitName[1][0];
+
     return (
       <section>
         <header>
@@ -69,7 +72,7 @@ class Splash extends React.Component {
               </div>
               <div className="right">
                 <button className="header-new" onClick={() => openModal('Create Project')}>+ New</button>
-                <button className="user-menu">{this.props.name}</button>
+                <button className="user-menu">{name}</button>
                 <button className="header-button" onClick={logout}>Log Out</button>
               </div>
             </div>
