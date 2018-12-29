@@ -6,13 +6,17 @@ import NewColumn from '../../columns/new_column/new_column_form_container';
 class ProjectShow extends React.Component {
 
   componentDidMount(){
-    this.props.requestProject(this.props.projectId);
+    const { teamId, projectId, columnId, requestAllTasks, requestAllColumns } = this.props;
+    // debugger
+
+    // debugger
+    this.props.requestProject(projectId, teamId).then(() => requestAllColumns(teamId, projectId)).then((payload) => requestAllTasks(teamId, projectId, parseInt(Object.keys(payload.columns)[0])));
     this.buttonOrForm();
   }
 
   componentDidUpdate(prevProps){
     if ((prevProps.projectId != this.props.projectId) || (prevProps.columns.length != this.props.columns.length)){
-      this.props.requestProject(this.props.projectId);
+      this.props.requestProject(this.props.projectId, this.props.teamId);
     }
   }
 
@@ -44,8 +48,8 @@ class ProjectShow extends React.Component {
                 }}>
                 <div className="scrollable">
                   <div className="columns">
-                    {columns.map(column => (
-                      <Column key={column.id}
+                    {columns.map((column, i) => (
+                      <Column key={`column-${i}`}
                         column={column}
                         />
                     ))}

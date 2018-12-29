@@ -3,7 +3,8 @@ class Api::ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @project.team_id = current_user.id
+
+    @project.team_id = params[:team_id]
     @project.color = Random.new.bytes(3).unpack("H*")[0]
     if @project.save
       render :show
@@ -22,19 +23,21 @@ class Api::ProjectsController < ApplicationController
   end
 
   def show
+
     @project = Project.includes(columns: [:tasks]).find(params[:id])
+    
     render :show
   end
 
   def index
-    @projects = current_user.projects.includes(columns: [:tasks])
+    @projects = current_team.projects.includes(columns: [:tasks])
     render :index
   end
 
   def destroy
     @project = Project.find(params[:id])
    #check for current_user.id == to project.user_id
-    if @project.team_id == current_user.id
+    if @project.team_id == current_team.id
       @project.destroy
       render json: {id: @project.id}
     end

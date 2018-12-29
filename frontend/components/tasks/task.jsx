@@ -7,7 +7,7 @@ class Task extends React.Component {
   }
 
   dropdownTaskOpen(){
-    const { dropdownTask, task, currentTask, selectEdit, closeDropdown, deleteTask, deselectEdit, columnId, projectId } = this.props;
+    const { dropdownTask, task, currentTask, selectEdit, closeDropdown, deleteTask, deselectEdit, columnId, projectId, teamId } = this.props;
     //
     if (!currentTask){
       return <div className="no-dropdown"></div>;
@@ -19,7 +19,7 @@ class Task extends React.Component {
             <div className="dropdown-delete">
               <div className="task-menu">
                 <button className="delete-task" onClick={() => {
-                    deleteTask(task.id, columnId, projectId);
+                    deleteTask(task.id, columnId, projectId, teamId);
                     closeDropdown();
                     deselectEdit();
                   }}><span>Delete</span></button>

@@ -21,18 +21,18 @@ class Column extends React.Component {
   }
 
   deleteButton(column) {
-    const { deleteColumn, projectId, taskIds } = this.props;
+    const { teamId, deleteColumn, projectId, taskIds } = this.props;
     return (taskIds.length > 0) ? <span className="no-delete"></span> : <button className="column-menu-item" onClick={() => deleteColumn(column.id, projectId)}><span className="column-menu-item-label">Delete</span></button>;
   }
 
   handleEdit(e) {
-    const { projectId } = this.props;
+    const { projectId, teamId } = this.props;
     e.preventDefault();
     this.props.column.name = this.state.name;
     const column = Object.assign({}, this.props.column );
     if (e.key === 'Enter'){
       this.props.deselectEdit();
-      this.props.updateColumn(column, projectId);
+      this.props.updateColumn(column, projectId, teamId);
     } else {
       this.update()(e);
     }

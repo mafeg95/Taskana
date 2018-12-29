@@ -24,18 +24,18 @@ class TaskForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    const { task, column, project, updateTask, closeModal } = this.props;
+    const { task, column, project, updateTask, closeModal, teamId } = this.props;
     this.update(e.target.id)(e);
     const newTask = Object.assign({}, this.state);
-    updateTask(newTask, column.id, project.id);
+    updateTask(newTask, column.id, project.id, teamId);
   }
 
   componentDidUpdate(prevProps){
-    const { task, column, project, fetchTask, updateTask } = this.props;
+    const { task, column, project, fetchTask, updateTask, teamId } = this.props;
 
     if (this.needsUpdate(prevProps, this.state)){ // this.state.title
       const newTask = Object.assign(task, this.state);
-      updateTask(newTask, column.id, project.id);
+      updateTask(newTask, column.id, project.id, teamId);
     }
   }
 
@@ -49,7 +49,7 @@ class TaskForm extends React.Component {
     } else if (prevProps.task.completed != state.completed) {
       return true;
     } else if (this.myGetTime(prevDate) != this.myGetTime(date)) {
-      // debugger
+      //
       return true;
     } else {
       return false;

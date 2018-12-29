@@ -16,14 +16,14 @@ class NewTask extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const { projectId, columnId, createTask } = this.props;
+    const { projectId, columnId, createTask, teamId } = this.props;
     const task = Object.assign({}, this.state);
     if (e.key === 'Enter'){
       if (this.state.title === ''){
         this.props.hideTaskNew();
       } else {
 
-        createTask(task, columnId, projectId).then(() => this.setState({ title: ''}));
+        createTask(task, columnId, projectId, teamId).then(() => this.setState({ title: ''}));
       }
     } else {
       this.update()(e);

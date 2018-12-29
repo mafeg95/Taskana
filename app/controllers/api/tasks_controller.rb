@@ -8,7 +8,6 @@ class Api::TasksController < ApplicationController
     if @task.save
       render :show
     else
-
       render json: @task.errors.full_messages, status: 422
     end
   end
@@ -31,6 +30,11 @@ class Api::TasksController < ApplicationController
   def show
     @task = Task.find(params[:id])
     render :show
+  end
+
+  def index
+    @tasks = all_tasks
+    render :index
   end
 
   private

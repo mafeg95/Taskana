@@ -5,9 +5,10 @@ export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const REMOVE_ERRORS = 'REMOVE_ERRORS';
 
-export const receiveCurrentUser = currentUser => ({
+export const receiveCurrentUser = ({user, team}) => ({
   type: RECEIVE_CURRENT_USER,
-  currentUser
+  currentUser: user,
+  team
 });
 
 export const logoutCurrentUser = () => ({
@@ -15,7 +16,7 @@ export const logoutCurrentUser = () => ({
 });
 
 export const receiveErrors = errors => {
-  
+
   return {
     type: RECEIVE_SESSION_ERRORS,
     errors
@@ -23,9 +24,9 @@ export const receiveErrors = errors => {
 };
 
 export const demoLogin = () => dispatch => {
-  
-  return (APIUtil.login({username: 'Demo User', password: 'hogwarts'}).then(user => (
-    dispatch(receiveCurrentUser(user))
+
+  return (APIUtil.login({username: 'Demo User', password: 'hogwarts'}).then(payload => (
+    dispatch(receiveCurrentUser(payload))
     ), err => (dispatch(receiveErrors(err.responseJSON))))
   );
 };
@@ -38,15 +39,15 @@ export const removeErrors = () => {
 
 export const signup = user => dispatch => {
 
-  return (APIUtil.signup(user).then(user => (
-    dispatch(receiveCurrentUser(user))
+  return (APIUtil.signup(user).then(payload => (
+    dispatch(receiveCurrentUser(payload))
   ), err => (dispatch(receiveErrors(err.responseJSON))))
   );
 };
 
 export const login = user => dispatch => (
-  APIUtil.login(user).then(user => (
-    dispatch(receiveCurrentUser(user))
+  APIUtil.login(user).then(payload => (
+    dispatch(receiveCurrentUser(payload))
   ), err => (dispatch(receiveErrors(err.responseJSON))))
 );
 

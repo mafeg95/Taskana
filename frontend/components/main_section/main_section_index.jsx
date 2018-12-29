@@ -5,12 +5,13 @@ import { Link } from 'react-router-dom';
 class MainSectionProjectIndex extends React.Component {
 
   componentDidMount(){
-    this.props.requestAllProjects();
+    this.props.requestAllProjects(this.props.teamId);
+
   }
 
 
   render(){
-    const { projects, openModal, deleteProject } = this.props;
+    const { teamId, projects, openModal, deleteProject } = this.props;
     return (
       // ui: { sidebarIsOpen: true/false }
       <div id="index" className="index" style={{ marginLeft: this.props.sidebar ? '250px' : '0' }} >
@@ -23,10 +24,12 @@ class MainSectionProjectIndex extends React.Component {
                 <ProjectIndexItem key={project.id}
                   project={project}
                   openModal={this.props.openModal}
-                  deleteProject={this.props.deleteProject}/>
+                  deleteProject={this.props.deleteProject}
+                  teamId={teamId}/>
                 ))}
               <button className="project-index-item new-project" onClick={() => {
-                  openModal('Create Project')}}>
+                  openModal('Create Project');
+                }}>
                 <div className="tile-structure">
                   <div className="tile-s-child">
                     <div className="tile-new">

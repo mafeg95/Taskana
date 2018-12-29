@@ -5,9 +5,10 @@ import { login, removeErrors, demoLogin } from '../../actions/session_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import SessionForm from './session_form';
 
-const msp = ({ errors }) => {
+const msp = (state) => {
   return {
-    errors: errors.session,
+    teamId: state.session.currentTeamId,
+    errors: state.errors.session,
     formType: 'Log In',
     navMessage: "Don't have an account?",
     formTitle: "Log in"

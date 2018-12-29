@@ -16,10 +16,9 @@ class Project < ApplicationRecord
   validates :description, :team_id, presence: true
 
   # team id will serve as user id for now
-  belongs_to :user,
-    primary_key: :id,
+  belongs_to :team,
     foreign_key: :team_id,
-    class_name: :User
+    class_name: :Team
 
   has_many :columns,
     dependent: :destroy

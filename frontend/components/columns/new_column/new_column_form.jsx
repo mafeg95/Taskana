@@ -10,15 +10,14 @@ class NewColumn extends React.Component {
   }
 
   handleSubmit(e) {
-    const { projectId } = this.props;
+    const { projectId, teamId } = this.props;
     e.preventDefault();
     const column = Object.assign({}, this.state);
     if (e.key === 'Enter'){
       if (this.state.name === ''){
         this.props.deselectNewColumn();
       } else {
-
-        this.props.createColumn(column, projectId).then(() => this.setState({ name: ''}));
+        this.props.createColumn(column, projectId, teamId).then(() => this.setState({ name: ''}));
       }
     } else {
       this.update()(e);

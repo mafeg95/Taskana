@@ -5,19 +5,22 @@ import MainSectionProjectIndex from './main_section_index';
 import { requestAllProjects, deleteProject } from '../../actions/project_actions';
 import { openModal } from '../../actions/modal_actions';
 
-const msp = state => {
+const msp = (state, {match}) => {
+  const teamId = parseInt(match.params.teamId);
+  
   return {
     projects: Object.values(state.entities.projects),
-    sidebar: state.ui.sidebar
+    sidebar: state.ui.sidebar,
+    teamId
   };
 };
 
 const mdp = dispatch => {
   return {
-    requestAllProjects: () => dispatch(requestAllProjects()),
+    requestAllProjects: (teamId) => dispatch(requestAllProjects(teamId)),
     openModal: (modal, projectId) => dispatch(openModal(modal, projectId)),
     openNav: () => dispatch(openNav()),
-    deleteProject: (projectId) => dispatch(deleteProject(projectId))
+    deleteProject: (projectId, teamId) => dispatch(deleteProject(projectId, teamId))
   };
 };
 

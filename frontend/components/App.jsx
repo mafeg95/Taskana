@@ -17,10 +17,10 @@ const App = () => {
       <Modal />
       <SplashContainer />
       <div className="main-ui">
-        <ProtectedRoute path="/" component={AsideSectionProjectIndex} />
+        <ProtectedRoute path="/teams/:teamId" component={AsideSectionProjectIndex} />
         <Switch>
-          <ProtectedRoute exact path="/" component={MainSectionProjectIndex}/>
-          <ProtectedRoute exact path="/projects/:projectId" component={ProjectShowContainer}/>
+          <ProtectedRoute exact path="/teams/:teamId" component={MainSectionProjectIndex}/>
+          <ProtectedRoute exact path="/teams/:teamId/projects/:projectId" component={ProjectShowContainer}/>
         </Switch>
       </div>
     </div>

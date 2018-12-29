@@ -1,9 +1,10 @@
-import { RECEIVE_TASK, REMOVE_TASK } from '../actions/task_actions';
+import { RECEIVE_TASK, REMOVE_TASK, RECEIVE_ALL_TASKS } from '../actions/task_actions';
 import { RECEIVE_COLUMN } from '../actions/column_actions';
 import {RECEIVE_PROJECT } from '../actions/project_actions';
 import merge from 'lodash/merge';
 
 const TasksReducer = (state = {}, action) => {
+  // debugger
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_PROJECT:
@@ -16,6 +17,8 @@ const TasksReducer = (state = {}, action) => {
       let newState = merge({}, state);
       delete newState[action.payload.task.id];
       return newState;
+    case RECEIVE_ALL_TASKS:
+      return merge({}, state, action.tasks);
     default:
       return state;
   }

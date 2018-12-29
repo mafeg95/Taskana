@@ -7,6 +7,7 @@ export const RECEIVE_PROJECT_ERRORS = 'RECEIVE_PROJECT_ERRORS';
 export const REMOVE_ERRORS = 'REMOVE_ERRORS';
 
 export const receiveProjects = (projects) => {
+
   return {
     type: RECEIVE_ALL_PROJECTS,
     projects
@@ -43,38 +44,40 @@ export const removeErrors = () => {
   };
 };
 
-export const requestAllProjects = () => dispatch => {
-  return ProjectAPIUtil.fetchAllProjects().then(projects => (
+export const requestAllProjects = (teamId) => dispatch => {
+  debugger
+  return ProjectAPIUtil.fetchAllProjects(teamId).then(projects => (
     dispatch(receiveProjects(projects))
   ));
 };
 
-export const requestProject = id => dispatch => {
-  return ProjectAPIUtil.fetchSingleProject(id).then(payload => {
+export const requestProject = (id, teamId) => dispatch => {
+
+  return ProjectAPIUtil.fetchSingleProject(id, teamId).then(payload => {
 
     return dispatch(receiveProject(payload));
   }, err => (dispatch(receiveErrors(err.responseJSON))));
 };
 
-export const createProject = project => dispatch => {
+export const createProject = (project, teamId) => dispatch => {
 
-  return ProjectAPIUtil.createProject(project).then(project => {
+  return ProjectAPIUtil.createProject(project, teamId).then(payload => {
 
-    return dispatch(receiveProject(project));
+    return dispatch(receiveProject(payload));
   }, err => (dispatch(receiveErrors(err.responseJSON))));
 };
 
-export const updateProject = project => dispatch => {
-  return ProjectAPIUtil.updateProject(project).then(project => {
+export const updateProject = (project, teamId) => dispatch => {
+  return ProjectAPIUtil.updateProject(project, teamId).then(payload => {
 
-    return dispatch(receiveProject(project));
+    return dispatch(receiveProject(payload));
   }, err => {
 
     return dispatch(receiveErrors(err.responseJSON));
   });
 };
 
-export const deleteProject = projectId => dispatch => {
-  return ProjectAPIUtil.deleteProject(projectId).then(project => (
+export const deleteProject = (projectId, teamId) => dispatch => {
+  return ProjectAPIUtil.deleteProject(projectId, teamId).then(project => (
     dispatch(removeProject(projectId))));
 };

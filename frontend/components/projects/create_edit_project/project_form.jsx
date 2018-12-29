@@ -17,12 +17,13 @@ class ProjectForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const project = Object.assign({}, this.state);
-    this.props.action(project).then(({project}) => {
+    const { teamId } = this.props;
+    this.props.action(project, teamId).then(({project}) => {
       this.props.closeModal();
       if (this.props.formType === 'Create Project'){
-        this.props.history.push(`/projects/${project.id}`);
+        this.props.history.push(`/teams/${teamId}/projects/${project.id}`);
       } else {
-        this.props.history.push('/');
+        this.props.history.push(`/teams/${teamId}`);
       }
     });
   }

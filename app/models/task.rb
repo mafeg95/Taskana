@@ -7,11 +7,11 @@
 #  title       :string           not null
 #  author_id   :integer          not null
 #  assignee_id :integer
-#  due_date    :datetime
 #  column_id   :integer          not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  completed   :boolean
+#  due_date    :date
 #
 
 class Task < ApplicationRecord

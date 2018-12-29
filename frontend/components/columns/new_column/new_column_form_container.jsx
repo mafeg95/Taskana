@@ -5,15 +5,15 @@ import React from 'react';
 import { deselectEdit, closeDropdown, hideTaskNew, closeDropdownTask } from '../../../actions/ui_actions';
 
 const msp = (state, ownProps) => {
-
   return {
-    projectId: ownProps.projectId
+    projectId: ownProps.projectId,
+    teamId: state.session.currentTeamId
   };
 };
 
 const mdp = dispatch => {
   return {
-    createColumn: (column, projectId) => dispatch(createColumn(column, projectId)),
+    createColumn: (column, projectId, teamId) => dispatch(createColumn(column, projectId, teamId)),
     deselectEdit: () => dispatch(deselectEdit()),
     closeDropdown: () => dispatch(closeDropdown()),
     hideTaskNew: () => dispatch(hideTaskNew()),

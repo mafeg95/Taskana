@@ -24,7 +24,7 @@ class SessionForm extends React.Component {
 
   handleSubmitDemo(e) {
     e.preventDefault();
-    this.props.demoLogin().then(() => this.props.history.push("/")).then(this.props.closeModal);
+    this.props.demoLogin().then(() => this.props.history.push("/teams/1")).then(this.props.closeModal);
   }
 
   componentWillUnmount() {

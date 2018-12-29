@@ -7,18 +7,19 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 
 const msp = ({errors, session, entities}) => {
-  
+  const teamId = session.currentTeamId
   return {
     formType: 'Update Project',
     errors: errors.project,
     formMessage: 'Edit',
-    project: entities.projects[session.currentProjectId] || {name: '', description:''}
+    project: entities.projects[session.currentProjectId] || {name: '', description:'', teamId: `${teamId}`},
+    teamId
   };
 };
 
 const mdp = dispatch => {
   return {
-    action: project => dispatch(updateProject(project)),
+    action: (project, teamId) => dispatch(updateProject(project, teamId)),
     removeErrors: () => dispatch(removeErrors()),
     closeModal: () => dispatch(closeModal())
   };

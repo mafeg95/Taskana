@@ -1,7 +1,6 @@
 json.project do
-  json.extract! @project, :id, :name, :description, :color, :column_ids
+  json.extract! @project, :id, :name, :description, :color, :column_ids, :team_id
 end
-
 @project.columns.each do |column|
   json.columns do
     json.set! column.id do

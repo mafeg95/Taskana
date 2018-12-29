@@ -7,8 +7,8 @@ import { selectEdit, deselectEdit, openDropdown, closeDropdown, displayTaskNew, 
 
 const msp = (state, ownProps) => {
   const columnId = parseInt(ownProps.column.id);
-  const column = state.entities.columns[columnId];
-  //
+  const column = state.entities.columns[columnId] || {};
+  const teamId = state.session.currentTeamId;
   const tasks = ((column && column.task_ids) ? column.task_ids.map(id => state.entities.tasks[id]) : []);
   const taskIds = column.task_ids;
   return {
@@ -18,14 +18,15 @@ const msp = (state, ownProps) => {
     dropdown: state.ui.dropdown,
     tasks,
     taskIds,
-    creatingT: state.ui.creatingT
+    creatingT: state.ui.creatingT,
+    teamId
   };
 };
 
 const mdp = dispatch => {
   return {
-    deleteColumn: (columnId, projectId) => dispatch(deleteColumn(columnId, projectId)),
-    updateColumn: (column, projectId) => dispatch(updateColumn(column, projectId)),
+    deleteColumn: (columnId, projectId, teamId) => dispatch(deleteColumn(columnId, projectId, teamId)),
+    updateColumn: (column, projectId, teamId) => dispatch(updateColumn(column, projectId, teamId)),
     selectEdit: (columnId) => dispatch(selectEdit(columnId)),
     deselectEdit: () => dispatch(deselectEdit()),
     openDropdown: (columnId) => dispatch(openDropdown(columnId)),

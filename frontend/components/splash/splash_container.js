@@ -7,10 +7,11 @@ import { withRouter } from 'react-router-dom';
 
 const msp = ({ session, entities, ui }, ownProps) => {
 
+  const teamId = session.currentTeamId;
   return {
     currentUser: entities.users[session.currentUserId],
     sidebar: ui.sidebar,
-    currentProject: (ownProps.location.pathname === '/') ? null : entities.projects[session.currentProjectId],
+    currentProject: (ownProps.location.pathname === `/teams/${teamId}`) ? null : entities.projects[session.currentProjectId],
   };
 };
 

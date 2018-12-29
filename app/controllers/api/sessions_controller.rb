@@ -1,11 +1,12 @@
 class Api::SessionsController < ApplicationController
-  def create
+  def create #includes teams
     @user = User.includes(:projects).find_by_credentials(
       params[:user][:username],
       params[:user][:password]
     )
     if @user
       log_in(@user)
+      @team = @user.teams.first
       render 'api/users/show'
     else
       render json: ['The username or password is not correct'], status: 401
@@ -14,6 +15,7 @@ class Api::SessionsController < ApplicationController
 
   def destroy
     @user = current_user
+    @team = @user.teams.first
     if @user
       logout
       render 'api/users/show'

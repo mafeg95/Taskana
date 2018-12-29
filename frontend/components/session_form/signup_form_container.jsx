@@ -5,9 +5,9 @@ import { signup, removeErrors, demoLogin } from '../../actions/session_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import SessionForm from './session_form';
 
-const msp = ({ errors }) => {
+const msp = (state) => {
   return {
-    errors: errors.session,
+    errors: state.errors.session,
     formType: 'Sign Up',
     navMessage: "Already have an account?",
     formTitle: 'Sign up'

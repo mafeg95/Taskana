@@ -21,11 +21,16 @@ class Api::ColumnsController < ApplicationController
   end
 
   def destroy
-      
+
     @column = Column.find(params[:id])
 
     @column.destroy
     render :show
+  end
+
+  def index
+    @columns = all_columns
+    render :index
   end
 
   private
