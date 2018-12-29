@@ -45,7 +45,7 @@ export const removeErrors = () => {
 };
 
 export const requestAllProjects = (teamId) => dispatch => {
-  debugger
+  
   return ProjectAPIUtil.fetchAllProjects(teamId).then(projects => (
     dispatch(receiveProjects(projects))
   ));

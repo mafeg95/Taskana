@@ -16,9 +16,9 @@ class AsideSectionProjectIndex extends React.Component {
   requestProjectShow(projectId){
     const { teamId, columnId, requestProject, requestAllProjects, requestAllColumns, requestAllTasks, firstProject } = this.props;
     if (projectId != null){
-      debugger
+
       requestProject(projectId, teamId).then(() => {
-        debugger
+
         return requestAllProjects(teamId);
       });
     } else {

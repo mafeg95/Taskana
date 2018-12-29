@@ -5,7 +5,7 @@ import merge from 'lodash/merge';
 
 const ColumnsReducer = (state = {}, action) => {
   let newState;
-  // debugger
+  // 
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_PROJECT:

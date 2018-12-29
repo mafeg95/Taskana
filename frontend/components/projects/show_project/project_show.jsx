@@ -7,9 +7,9 @@ class ProjectShow extends React.Component {
 
   componentDidMount(){
     const { teamId, projectId, columnId, requestAllTasks, requestAllColumns } = this.props;
-    // debugger
+    //
 
-    // debugger
+    //
     this.props.requestProject(projectId, teamId).then(() => requestAllColumns(teamId, projectId)).then((payload) => requestAllTasks(teamId, projectId, parseInt(Object.keys(payload.columns)[0])));
     this.buttonOrForm();
   }

@@ -4,7 +4,7 @@ import {RECEIVE_PROJECT } from '../actions/project_actions';
 import merge from 'lodash/merge';
 
 const TasksReducer = (state = {}, action) => {
-  // debugger
+  //
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_PROJECT:
