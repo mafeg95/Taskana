@@ -4,7 +4,7 @@ class Api::SessionsController < ApplicationController
       params[:user][:username],
       params[:user][:password]
     )
-    debugger
+    
     if @user
       @team = @user.teams.first
       log_in(@user)
