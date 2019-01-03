@@ -1,13 +1,16 @@
 import { RECEIVE_COLUMN, REMOVE_COLUMN, RECEIVE_ALL_COLUMNS } from '../actions/column_actions';
 import { RECEIVE_PROJECT } from '../actions/project_actions';
 import { RECEIVE_TASK, REMOVE_TASK } from '../actions/task_actions';
+import { RECEIVE_TEAM } from '../actions/team_actions';
 import merge from 'lodash/merge';
 
 const ColumnsReducer = (state = {}, action) => {
   let newState;
-  // 
   Object.freeze(state);
   switch (action.type) {
+    case RECEIVE_TEAM:
+    
+      return merge({}, state, action.payload.columns);
     case RECEIVE_PROJECT:
       return merge({}, state, action.columns);
     case RECEIVE_ALL_COLUMNS:

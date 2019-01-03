@@ -2,6 +2,7 @@ import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/session_ac
 import { OPEN_MODAL } from '../actions/modal_actions';
 import { RECEIVE_PROJECT, RECEIVE_ALL_PROJECTS } from '../actions/project_actions';
 import { SELECT_EDIT, OPEN_DROPDOWN, OPEN_TASK_NEW, OPEN_DROPDOWN_TASK } from '../actions/ui_actions';
+import { RECEIVE_TEAM } from '../actions/team_actions';
 import merge from 'lodash/merge';
 const defaultState = { currentUserId: null, currentTeamId: null, currentProjectId: null, currentColumnId: null, currentTaskId: null};
 
@@ -26,9 +27,15 @@ const sessionReducer = (state = defaultState, action) => {
     case OPEN_DROPDOWN_TASK:
       return merge({}, state, {currentTaskId: action.taskId});
     case RECEIVE_ALL_PROJECTS:
-      const projectId = parseInt(Object.keys(action.projects)[0]);
-      const teamId = action.projects[projectId].team_id;
-      return merge({}, state, {currentTeamId: teamId});
+      if (Object.keys(action.projects).length != 0) {
+        
+        const projectId = parseInt(Object.keys(action.projects)[0]);
+        const teamId = action.projects[projectId].team_id;
+        return merge({}, state, {currentTeamId: teamId});
+      }
+      return state;
+    case RECEIVE_TEAM:
+        return merge({}, state, {currentTeamId: action.payload.team.id});
     default:
       return state;
   }

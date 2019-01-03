@@ -271,3 +271,7 @@ footer > p {
   z-index: 20;
   top: 70px;
 }
+
+html, body, main {
+  height: 100%;
+}

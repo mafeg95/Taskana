@@ -5,8 +5,8 @@ import { requestAllColumns } from '../../actions/column_actions';
 import AsideSectionProjectIndex from './aside_section_index';
 import { requestAllProjects, requestProject } from '../../actions/project_actions';
 import { openModal } from '../../actions/modal_actions';
-import { closeNav, deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew, closeDropdownTask } from '../../actions/ui_actions';
-import { requestAllTeams } from '../../actions/team_actions';
+import { closeNav, deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew, closeDropdownTask, closeTeamDropdown } from '../../actions/ui_actions';
+import { requestAllTeams, requestTeam } from '../../actions/team_actions';
 
 const msp = (state, {match, location}) => {
   const locationArr = location.pathname.split('/');
@@ -45,7 +45,9 @@ const mdp = dispatch => {
     closeDropdownTask: () => dispatch(closeDropdownTask()),
     requestAllTeams: () => dispatch(requestAllTeams()),
     requestAllTasks: (teamId, projectId, columnId) => dispatch(requestAllTasks(teamId, projectId, columnId)),
-    requestProject: (projectId, teamId) => dispatch(requestProject(projectId, teamId))
+    requestProject: (projectId, teamId) => dispatch(requestProject(projectId, teamId)),
+    requestTeam: (teamId) => dispatch(requestTeam(teamId)),
+    closeTeamDropdown: () => dispatch(closeTeamDropdown())
   };
 };
 

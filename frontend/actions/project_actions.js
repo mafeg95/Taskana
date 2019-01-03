@@ -24,10 +24,11 @@ export const receiveProject = ({project, columns, tasks}) => {
   };
 };
 
-export const removeProject = projectId => {
+export const removeProject = (projectId, teamId) => {
   return {
     type: REMOVE_PROJECT,
-    projectId
+    projectId,
+    teamId
   };
 };
 
@@ -45,7 +46,7 @@ export const removeErrors = () => {
 };
 
 export const requestAllProjects = (teamId) => dispatch => {
-  
+
   return ProjectAPIUtil.fetchAllProjects(teamId).then(projects => (
     dispatch(receiveProjects(projects))
   ));
@@ -79,5 +80,5 @@ export const updateProject = (project, teamId) => dispatch => {
 
 export const deleteProject = (projectId, teamId) => dispatch => {
   return ProjectAPIUtil.deleteProject(projectId, teamId).then(project => (
-    dispatch(removeProject(projectId))));
+    dispatch(removeProject(projectId, teamId))));
 };

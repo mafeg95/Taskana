@@ -5,16 +5,25 @@ import { Link } from 'react-router-dom';
 class MainSectionProjectIndex extends React.Component {
 
   componentDidMount(){
+
+    this.props.requestTeam(this.props.teamId);
     this.props.requestAllProjects(this.props.teamId);
 
   }
 
+  componentDidUpdate(prevProps){
+    if (prevProps.location.pathname != this.props.location.pathname){
+      
+      this.props.requestTeam(this.props.teamId);
+      this.props.requestAllProjects(this.props.teamId);
+    }
+  }
 
   render(){
-    const { teamId, projects, openModal, deleteProject } = this.props;
+    const { teamId, projects, openModal, deleteProject, closeTeamDropdown } = this.props;
     return (
       // ui: { sidebarIsOpen: true/false }
-      <div id="index" className="index" style={{ marginLeft: this.props.sidebar ? '250px' : '0' }} >
+      <div id="index" className="index" style={{ marginLeft: this.props.sidebar ? '250px' : '0' }} onClick={() => closeTeamDropdown()}>
         <div className="wrapper">
         <section className="main-index">
           <h1 className="project-index">Projects</h1>

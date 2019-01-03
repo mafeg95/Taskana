@@ -10,6 +10,8 @@ export const OPEN_TASK_NEW = 'OPEN_TASK_NEW';
 export const CLOSE_TASK_NEW = 'CLOSE_TASK_NEW';
 export const OPEN_DROPDOWN_TASK = 'OPEN_DROPDOWN_TASK';
 export const CLOSE_DROPDOWN_TASK = 'CLOSE_DROPDOWN_TASK';
+export const OPEN_DROPDOWN_TEAM = 'OPEN_DROPDOWN_TEAM';
+export const CLOSE_DROPDOWN_TEAM = 'CLOSE_DROPDOWN_TEAM';
 
 export const openNav = () => {
   return {
@@ -97,5 +99,19 @@ export const displayTaskNew = (columnId) => {
     type: OPEN_TASK_NEW,
     creatingT: true,
     columnId
+  };
+};
+
+export const openTeamDropdown = () => {
+  return {
+    type: OPEN_DROPDOWN_TEAM,
+    teamsDropdown: true
+  };
+};
+
+export const closeTeamDropdown = () => {
+  return {
+    type: CLOSE_DROPDOWN_TEAM,
+    teamsDropdown: false
   };
 };

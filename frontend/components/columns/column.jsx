@@ -13,6 +13,7 @@ class Column extends React.Component {
     this.dropdownOpen = this.dropdownOpen.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
     this.deleteButton = this.deleteButton.bind(this);
+    this.displayTasks = this.displayTasks.bind(this);
   }
 
   taskIds(){
@@ -103,8 +104,23 @@ class Column extends React.Component {
     }
   }
 
+  displayTasks(){
+    const { tasks, column, projectId } = this.props;
+    if (tasks.length === 0){
+      return <div className="no-tasks"></div>;
+    } else {
+      return tasks.map(task => (
+      <Task key={task.id}
+        task={task}
+        columnId={column.id}
+        projectId={projectId}/>
+    ));
+    }
+  }
+
   render(){
     const { column, projectId, deselectEdit, closeDropdown, dropdownOpen, currentColumn, tasks, displayTaskNew, hideTaskNew, openDropdownTask, closeDropdownTask } = this.props;
+  
     return (
       <div className="column-wrapper">
         <div className="board-column">
@@ -129,12 +145,7 @@ class Column extends React.Component {
                     <NewTask projectId={projectId}
                       columnId={column.id}/>
                     <div className="tasks-main" onClick={() => hideTaskNew()}>
-                      {tasks.map(task => (
-                      <Task key={task.id}
-                        task={task}
-                        columnId={column.id}
-                        projectId={projectId}/>
-                    ))}
+                      {this.displayTasks()}
                     </div>
                   </div>
                 </div>

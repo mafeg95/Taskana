@@ -5,29 +5,25 @@ import { closeNav } from '../../actions/ui_actions';
 class AsideSectionProjectIndex extends React.Component {
   constructor(props){
     super(props);
-    this.requestProjectShow = this.requestProjectShow.bind(this);
   }
 
   componentDidMount(){
+    const { teamId, requestTeam, requestAllProjects } = this.props;
 
-    this.requestProjectShow(this.props.projectId);
+    requestTeam(teamId);
+    // requestAllProjects(teamId);
   }
 
-  requestProjectShow(projectId){
-    const { teamId, columnId, requestProject, requestAllProjects, requestAllColumns, requestAllTasks, firstProject } = this.props;
-    if (projectId != null){
+  componentDidUpdate(prevProps){
+    if (prevProps.location.pathname != this.props.location.pathname){
 
-      requestProject(projectId, teamId).then(() => {
-
-        return requestAllProjects(teamId);
-      });
-    } else {
-      requestAllProjects(teamId).then(() => requestAllColumns(teamId, firstProject));
+      this.props.requestTeam(this.props.teamId);
+      this.props.requestAllProjects(this.props.teamId);
     }
   }
 
   render(){
-    const { teamId, teams, projects, deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew, closeDropdownTask } = this.props;
+    const { teamId, teams, projects, deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew, closeDropdownTask, closeTeamDropdown } = this.props;
     return (
       <aside id="aside-index" className="aside-index"
         style={{ width: this.props.sidebar ? '250px' : "0" }}
@@ -37,6 +33,7 @@ class AsideSectionProjectIndex extends React.Component {
           closeDropdown();
           hideTaskNew();
           closeDropdownTask();
+          closeTeamDropdown();
         }}>
         <section className="aside-project-index" >
           <div className="aside-top">
@@ -46,13 +43,6 @@ class AsideSectionProjectIndex extends React.Component {
             <button className="closebtn" onClick={this.props.closeNav}> &#60; &#9776;</button>
           </div>
           <section className="aside-projects aside-teams">
-            <ul className="aside-projects-list">
-              {teams.map((team, i) => (
-                <li className="aside-project" key={`team-${i}`}>
-                  {team.name}
-                </li>
-              ))}
-            </ul>
           </section>
           <section className="aside-projects">
             <ul className="aside-projects-list">

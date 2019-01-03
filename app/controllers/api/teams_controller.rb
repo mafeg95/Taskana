@@ -2,10 +2,12 @@ class Api::TeamsController < ApplicationController
   before_action :require_logged_in
 
   def create
+
     @team = Team.new(team_params)
-    Membership.create!(team_id: @team.id, member_id: current_user.id)
-    @members = team.members
+
     if @team.save
+      Membership.create!(team_id: @team.id, member_id: current_user.id)
+      @members = @team.members
       render :show
     else
       render json: @team.errors.full_messages, status: 422
@@ -22,11 +24,18 @@ class Api::TeamsController < ApplicationController
   end
 
   def destroy #remove?
-
+    @team = Team.find(params[:id])
+    @membership = Membership.find_by(team_id: @team.id)
+    if @membership.team_id == current_team.id && @membership.member_id == current_user.id
+      @membership.destroy
+      render json: {id: @team.id}
+    end
   end
 
   def show
+
     @team = Team.includes(projects: [:columns]).find(params[:id])
+
     render :show
   end
 
@@ -41,7 +50,7 @@ class Api::TeamsController < ApplicationController
   private
 
   def team_params
-    params.require(:team).permi(:name)
+    params.require(:team).permit(:name)
   end
 
 end

@@ -1,5 +1,6 @@
 import { RECEIVE_PROJECT, RECEIVE_ALL_PROJECTS, REMOVE_PROJECT } from '../actions/project_actions';
 import { RECEIVE_COLUMN, REMOVE_COLUMN } from '../actions/column_actions';
+import { RECEIVE_TEAM } from '../actions/team_actions';
 import merge from 'lodash/merge';
 
 const ProjectsReducer = (state = {}, action) => {
@@ -11,7 +12,6 @@ const ProjectsReducer = (state = {}, action) => {
 
       return merge({}, state, {[action.project.id]: action.project});
     case RECEIVE_ALL_PROJECTS:
-
       return merge({}, state, action.projects);
     case REMOVE_PROJECT:
       newState = merge({}, state);
@@ -28,6 +28,8 @@ const ProjectsReducer = (state = {}, action) => {
       const columnIds = newState[action.payload.column.project_id].column_ids;
       columnIds.splice(columnIds.indexOf(action.payload.column.id), 1);
       return newState;
+    case RECEIVE_TEAM:
+      return merge({}, action.payload.projects);
     default:
       return state;
   }

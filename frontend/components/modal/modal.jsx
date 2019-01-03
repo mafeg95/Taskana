@@ -6,6 +6,8 @@ import SignUpFormContainer from '../session_form/signup_form_container';
 import CreateProjectFormContainer from '../projects/create_edit_project/create_project_form_container';
 import EditProjectFormContainer from '../projects/create_edit_project/edit_project_form_container';
 import TaskFormContainer from '../tasks/edit_task/edit_task_container';
+import CreateTeamFormContainer from '../teams/create_edit/create_team_container';
+import UpdateTeamFormContainer from '../teams/create_edit/edit_team_container';
 
 const Modal = ({ modal, closeModal }) => {
 
@@ -29,6 +31,12 @@ const Modal = ({ modal, closeModal }) => {
     case 'Task Modal':
       component = <TaskFormContainer />;
       break;
+    case 'Create Team':
+      component = <CreateTeamFormContainer />;
+      break;
+    case 'Update Team':
+      component = <UpdateTeamFormContainer />;
+      break;
     default:
       return null;
   }
@@ -38,7 +46,7 @@ const Modal = ({ modal, closeModal }) => {
     <div className="top-layer">
       <div className={classname} onClick={closeModal}>
         <div className="top-buffer"></div>
-          <div className="modal-child" onClick={e => e.stopPropagation()}>
+          <div className={`modal-child ${cases[0].toLowerCase()}-${cases[1].toLowerCase()}-child`} onClick={e => e.stopPropagation()}>
             { component }
           </div>
         <div className="bottom-buffer"></div>

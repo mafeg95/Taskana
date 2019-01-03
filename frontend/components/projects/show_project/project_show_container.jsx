@@ -8,13 +8,11 @@ import { deselectNewColumn, selectNewColumn, deselectEdit, hideTaskNew } from '.
 import React from 'react';
 
 const msp = (state, { match }) => {
-
   const teamId = parseInt(match.params.teamId);
   const projectId = parseInt(match.params.projectId);
   const project = state.entities.projects[projectId];
   const columns = ((project && project.column_ids) ? project.column_ids.map(id => state.entities.columns[id]) : []);
-  const columnId = columns.length !== 0 ? state.entities.projects[state.session.currentProjectId].column_ids[0] : null;
-
+  const columnId = columns.length !== 0 ? state.entities.projects[projectId].column_ids[0] : null;
   return {
     projectId,
     project,

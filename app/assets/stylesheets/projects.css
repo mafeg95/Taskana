@@ -225,6 +225,7 @@
 
 .index {
   transition: margin-left 300ms ease-out,transform 300ms ease-out;
+  height: 100%;
 }
 
 .project-new {

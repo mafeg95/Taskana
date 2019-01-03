@@ -1,4 +1,5 @@
 export const fetchAllProjects = (teamId) => {
+  
   return $.ajax({
     method: 'GET',
     url: `api/teams/${teamId}/projects`
@@ -6,7 +7,7 @@ export const fetchAllProjects = (teamId) => {
 };
 
 export const fetchSingleProject = (id, teamId) => {
-  
+
   return $.ajax({
     method: 'GET',
     url: `api/teams/${teamId}/projects/${id}`

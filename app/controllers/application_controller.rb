@@ -23,7 +23,11 @@ class ApplicationController < ActionController::Base
   end
 
   def current_team
-    @current_team ||= Team.find(params[:team_id])
+    if params[:team_id]
+      @current_team = Team.find(params[:team_id])
+    elsif params[:id]
+      @current_team = Team.find(params[:id])
+    end
   end
 
   def require_logged_in

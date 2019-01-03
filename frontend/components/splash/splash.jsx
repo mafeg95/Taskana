@@ -1,20 +1,22 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
-
+import TeamIndex from '../teams/dropdown_index/team_index_container';
 
 class Splash extends React.Component {
   constructor(props){
     super(props);
+    this.dropdownTeamsOpen = this.dropdownTeamsOpen.bind(this);
+    this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
   renderHeader(){
 
-    const { currentProject } = this.props;
+    const { currentProject, teamId } = this.props;
     if (currentProject){
       return (<h1>{currentProject.name}</h1>);
     } else {
       return (
-        <Link to="/" className="header-link-greeting">
+        <Link to={`/teams/${teamId}`} className="header-link-greeting">
           <h1>Home</h1>
         </Link>
       );
@@ -47,8 +49,26 @@ class Splash extends React.Component {
   );
   }
 
+  dropdownTeamsOpen() {
+    const { teamsDropdown } = this.props;
+    if (teamsDropdown) {
+      return <TeamIndex history={this.props.history}/>;
+    } else {
+      return <div className="no-dropdown-teams"></div>;
+    }
+  }
+
+  toggleDropdown(){
+    const { closeTeamDropdown, openTeamDropdown, teamsDropdown } = this.props;
+    if (teamsDropdown === false){
+      openTeamDropdown();
+    } else {
+      closeTeamDropdown();
+    }
+  }
+
   greeting() {
-    const { currentUser, logout, openModal, deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew, closeDropdownTask } = this.props;
+    const { currentUser, logout, openModal, deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew, closeDropdownTask, closeTeamDropdown, openTeamDropdown } = this.props;
 
     const splitName = currentUser.username.split(' ');
     const name = splitName[0][0] + splitName[1][0];
@@ -63,20 +83,25 @@ class Splash extends React.Component {
               hideTaskNew();
               closeDropdownTask();
             }}>
-            <div className="left">
+            <div className="left" onClick={() => closeTeamDropdown()}>
               <button className="ham-button" onClick={this.props.openNav}>&#9776;</button>
             </div>
             <div className="high-right">
-              <div className="low-left" style={{ marginLeft: this.props.sidebar ? '270px' : '60px'}}>
+              <div className="low-left" style={{ marginLeft: this.props.sidebar ? '270px' : '60px'}} onClick={() => closeTeamDropdown()}>
                 {this.renderHeader()}
               </div>
               <div className="right">
-                <button className="header-new" onClick={() => openModal('Create Project')}>+ New</button>
-                <button className="user-menu">{name}</button>
-                <button className="header-button" onClick={logout}>Log Out</button>
+                <button className="header-new" onClick={() => {
+                    closeTeamDropdown();
+                    openModal('Create Project');
+                  }}>+ New</button>
+                <button className="user-menu" onClick={() => this.toggleDropdown()}>{name}</button>
+                <div className="teams-dropdown">
+                  {this.dropdownTeamsOpen()}
+                </div>
               </div>
             </div>
-            <div className="header-shadow"></div>
+            <div className="header-shadow" onClick={() => closeTeamDropdown()}></div>
           </nav>
         </header>
       </section>
