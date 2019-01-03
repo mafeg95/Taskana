@@ -25,7 +25,7 @@ export const receiveErrors = errors => {
 
 export const demoLogin = () => dispatch => {
 
-  return (APIUtil.login({username: 'Demo User', password: 'hogwarts'}).then(payload => (
+  return (APIUtil.login({username: 'Demo User', password: 'hogwarts', teamId: 1}).then(payload => (
     dispatch(receiveCurrentUser(payload))
     ), err => (dispatch(receiveErrors(err.responseJSON))))
   );

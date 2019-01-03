@@ -4,9 +4,10 @@ class Api::SessionsController < ApplicationController
       params[:user][:username],
       params[:user][:password]
     )
+    debugger
     if @user
-      log_in(@user)
       @team = @user.teams.first
+      log_in(@user)
       render 'api/users/show'
     else
       render json: ['The username or password is not correct'], status: 401
