@@ -10,14 +10,22 @@ Live link: https://taskana.herokuapp.com/#/
 
 Teams are the main structure of the app. Users can create, edit, and delete teams. The users can have many teams, and teams can have many members. Each team has their own projects.
 
+![Teams](./readMe_images/Teams.png)
+
 ### Projects
 
 Projects organize the app further. Users can create projects, but they can only edit, and delete a project if they belong to the team that holds the project. Projects have a name and a description, as well as a team id
+
+![Projects](./readMe_images/Projects.png)
 
 ### Columns
 
 Columns are located in each project's show page. Users can create and edit a column whenever they want, but can only delete a column if the column has no tasks. Columns help organize tasks in different topics. Columns have a name and a project id, as well as a list of tasks that were assigned to the column.
 
+![Columns](./readMe_images/Columns.png)
+
 ### Tasks
 
 Tasks are the smallest feature of the application, yet they are the ones that have the most characteristics. They have the create, edit and delete functionality just as the other features. They have a name and a description, and they also include a due date, an author id, a column id, and a button to check whether the task was completed or not.
+
+![Tasks](./readMe_images/Tasks.png)
