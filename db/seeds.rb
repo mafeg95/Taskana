@@ -7,5 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 demo_user = User.create!({username: 'Demo User', password: 'hogwarts'});
-demo_team = Team.create!({name: 'Demo Team', id: 1})
+demo_team = Team.create!({name: 'Demo Team'})
 Membership.create!(member_id: demo_user.id, team_id: demo_team.id)
