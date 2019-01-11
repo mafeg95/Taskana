@@ -26,9 +26,12 @@ class Api::TeamsController < ApplicationController
   def destroy #remove?
     @team = Team.find(params[:id])
     @membership = Membership.find_by(team_id: @team.id)
-    if @membership.team_id == current_team.id && @membership.member_id == current_user.id
+    @teams = current_user.teams
+    if (@membership.team_id == current_team.id) && (@membership.member_id == current_user.id) && (@teams.length > 1)
       @membership.destroy
       render json: {id: @team.id}
+    elsif @teams.length <= 1
+      render json: ["If you want to be removed from this team, please create a new team"]
     end
   end
 

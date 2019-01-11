@@ -5,6 +5,7 @@ class TeamIndex extends React.Component {
   constructor(props){
     super(props);
     this.redirect = this.redirect.bind(this);
+    this.removeButton = this.removeButton.bind(this);
   }
 
   componentDidMount(){
@@ -16,12 +17,19 @@ class TeamIndex extends React.Component {
     this.props.history.push(`${team.id}`);
   }
 
-  componentDidUpdate(prevProps){
-    if (true){
-
-
+  removeButton(redirectTeam){
+    const { deleteTeam, closeTeamDropdown, teamId } = this.props;
+    if (this.props.teams.length > 1){
+      return <div className="team-button" onClick={() => {
+          deleteTeam(teamId);
+          closeTeamDropdown();
+          this.redirect(redirectTeam);
+        }}>
+        Remove me from this Team
+      </div>;
+    } else {
+      return <div className="no-button"></div>;
     }
-
   }
 
   render() {
@@ -59,13 +67,7 @@ class TeamIndex extends React.Component {
                   Update Team
                 </span>
               </div>
-              <div className="team-button" onClick={() => {
-                  deleteTeam(teamId);
-                  closeTeamDropdown();
-                  this.redirect(redirectTeam);
-                }}>
-                Remove me from this Team
-              </div>
+              {this.removeButton(redirectTeam)}
               <div className="menu-separator">
               </div>
               <div className="team-button">
