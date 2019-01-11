@@ -1,6 +1,6 @@
 # Taskana
 
-Taskana is a full-stack desktop application to help you organize your tasks and projects. It is inspired by website Asana, and was built using a PostgreSQL database, Ruby on Rails on the backend, and React.js on the frontend, using Redux as an architectural framework.
+Taskana is a full-stack web application to help you organize your tasks and projects. It is inspired by website Asana, and was built using a PostgreSQL database, Ruby on Rails on the backend, and React.js on the frontend, using Redux to manage state.
 
 Live link: https://taskana.herokuapp.com/#/
 
