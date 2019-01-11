@@ -71,7 +71,12 @@ class Splash extends React.Component {
     const { currentUser, logout, openModal, deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew, closeDropdownTask, closeTeamDropdown, openTeamDropdown } = this.props;
 
     const splitName = currentUser.username.split(' ');
-    const name = splitName[0][0] + splitName[1][0];
+    let name;
+    if (splitName.length === 2){
+      name = splitName[0][0] + splitName[1][0];
+    } else if (splitName.length === 1){
+      name = splitName[0][0];
+    }
 
     return (
       <section>

@@ -12,13 +12,13 @@ class TeamIndex extends React.Component {
   }
 
   redirect(team){
-    
+
     this.props.history.push(`${team.id}`);
   }
 
   componentDidUpdate(prevProps){
     if (true){
-      
+
 
     }
 
@@ -73,7 +73,10 @@ class TeamIndex extends React.Component {
                   My Profile Settings
                 </span>
               </div>
-              <div className="team-button" onClick={logout}>
+              <div className="team-button" onClick={() => {
+                  logout();
+                  closeTeamDropdown();
+                }}>
                 <span className="team-item">
                   Log Out
                 </span>
