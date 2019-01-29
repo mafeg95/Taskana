@@ -248,3 +248,22 @@
 textarea {
   resize: none;
 }
+
+.project-errors {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.error-container{
+  margin-top: 2px;
+  width: 50%;
+  background-color: #D5DCE0;
+  border-radius: 4px;
+}
+
+.p-error{
+  font-size: 13px;
+  margin-top: 7px;
+  margin-bottom: 7px;
+}

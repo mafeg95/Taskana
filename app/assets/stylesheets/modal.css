@@ -25,7 +25,7 @@
   box-shadow: 0 10px 15px 0 rgba(0,0,0,0.06);
   display: flex;
   z-index: 30px;
-  height: 90%;
+  height: 100%;
 }
 
 .create-project, .update-project {
@@ -189,7 +189,7 @@
 }
 
 .create-project-child{
-  height: 48%;
+  height: 56%;
 }
 
 .task-modal-child{

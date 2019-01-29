@@ -37,7 +37,7 @@ class Splash extends React.Component {
           <section className="splash-content-text">
             <div className="further-div">
               <h1 className="splash-h1">Make more time for the work that matters most</h1>
-              <p className="splash-text">Tasksana is the work management platform teams use to stay focused on the goals, projects, and daily tasks that grow your business.</p>
+              <p className="splash-text">Taskana is the work management platform teams use to stay focused on the goals, projects, and daily tasks that grow your business.</p>
             </div>
           </section>
           <input id="splash-email" type="text"
