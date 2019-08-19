@@ -34,6 +34,7 @@ export const requestAllTeams = () => dispatch => {
 export const requestTeam = id => dispatch => {
 
   return TeamAPIUtil.fetchTeam(id).then(payload => {
+    // debugger
     return dispatch(receiveTeam(payload));
   });
 };

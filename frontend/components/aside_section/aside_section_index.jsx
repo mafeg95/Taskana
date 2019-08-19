@@ -23,7 +23,7 @@ class AsideSectionProjectIndex extends React.Component {
   }
 
   render(){
-    const { teamId, teams, projects, deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew, closeDropdownTask, closeTeamDropdown } = this.props;
+    const { teamName, teamId, teams, projects, deselectNewColumn, deselectEdit, closeDropdown, hideTaskNew, closeDropdownTask, closeTeamDropdown, members } = this.props;
     return (
       <aside id="aside-index" className="aside-index"
         style={{ width: this.props.sidebar ? '250px' : "0" }}
@@ -42,19 +42,41 @@ class AsideSectionProjectIndex extends React.Component {
             </Link>
             <button className="closebtn" onClick={this.props.closeNav}> &#60; &#9776;</button>
           </div>
-          <section className="aside-projects aside-teams">
-          </section>
-          <section className="aside-projects">
-            <ul className="aside-projects-list">
-              {projects.map((project, i)=> (
-                <Link to={`/teams/${teamId}/projects/${project.id}`} key={`project-${i}`} className="link-project-aside">
-                  <li className="aside-project">
-                    <svg className="li-square" style={{ backgroundColor: `#${project.color}`}}></svg>
-                    {project.name}
-                  </li>
-                </Link>
-              ))}
-            </ul>
+          <section className="aside-projects-members">
+            <label className="team-header">
+              <div className="team-name">
+                {teamName}
+              </div>
+            </label>
+            <section className="members-projects-section">
+              <div className="aside-members">
+                <label className="projects-members-label">
+                  Members
+                </label>
+                <ul className="team-members-list">
+                  {members.map((member, i) => (
+                    <li className="team-member" key={`member-${i}`}>
+                      {member.username}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="aside-projects">
+                <label className="projects-members-label">
+                  Projects
+                </label>
+                <ul className="aside-projects-list">
+                  {projects.map((project, i)=> (
+                    <Link to={`/teams/${teamId}/projects/${project.id}`} key={`project-${i}`} className="link-project-aside">
+                      <li className="aside-project">
+                        <svg className="li-square" style={{ backgroundColor: `#${project.color}`}}></svg>
+                        {project.name}
+                      </li>
+                    </Link>
+                  ))}
+                </ul>
+              </div>
+            </section>
           </section>
         </section>
       </aside>

@@ -17,11 +17,19 @@
   align-items: center;
 }
 
+.aside-projects{
+  display: flex;
+  flex-direction: column;
+  margin: 5px 10px 5px 15px;
+  color: #d5dce0;
+  font-size: 13px;
+}
+
 .aside-project {
   align-items: center;
   display: flex;
   justify-content: right;
-  padding: 0 10px 0 15px;
+  padding: 0 10px 0 10px;
   height: 28px;
 }
 
@@ -30,6 +38,58 @@
   flex-direction: column;
   flex: 1;
   height: 100%;
+}
+
+.li-square{
+  height: 12px;
+  margin-right: 10px;
+}
+
+.aside-project{
+  font-size: 13px;
+}
+
+.aside-projects-members{
+  border-bottom: 1px solid #222b37;
+  border-top: 1px solid #222b37;
+  padding-bottom: 30px;
+  padding-top: 10px;
+}
+
+.team-header{
+  color: #d5dce0;
+  font-weight: 400;
+  display: flex;
+  height: 28px;
+  padding: 0 15px 0 15px;
+}
+
+.team-name{
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #e8ecee;
+}
+
+.members-projects-section{
+
+}
+
+.projects-members-label{
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.team-member{
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+.aside-members{
+  display: flex;
+  flex-direction: column;
+  margin: 5px 10px 5px 15px;
+  color: #d5dce0;
+  font-size: 13px;
 }
 
 .aside-index{
